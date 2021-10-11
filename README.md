@@ -14,3 +14,5 @@ Todo items must have three settings: pending, in progress, awaiting confirmation
 
 Items on list must be able to be dragged to ensure wife priority order is met
 **For urgent element color code element in list to RED
+
+*Sign-in user(wife) creates room, user(wife) sends invite to other user(husband)
