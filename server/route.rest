@@ -6,8 +6,13 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "Logan"
+    "name": "Logan",
+    "husbandOfUser": [{"husband":"Josh"}]
 }
+
+###
+DELETE http://localhost:3000/users/61675ff0938aa654107debac
+
 
 ###
 

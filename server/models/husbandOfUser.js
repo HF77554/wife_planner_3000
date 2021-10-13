@@ -1,18 +1,18 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
-    name: {
+const husbandOfUserSchema = new mongoose.Schema({
+    husbandName: {
         type: String,
         required: true
     },
-    husbandOfUserID: {
+    husbandTasks: {
         type: Object
     },
-    subscribeDate: {
+    creationDate: {
         type: Date,
         required: true,
         default: () => Date.now()
     }
 })
 
-module.exports = mongoose.model('user', userSchema)
+module.exports = mongoose.model('husbandOfUser', husbandOfUserSchema)
