@@ -1,0 +1,18 @@
+
+GET http://localhost:3000/users
+
+### 
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Logan"
+}
+
+###
+
+GET http://localhost:3000/users/:id/usertasks
+
+###
+
+GET http://localhost:3000/users/:id/usertasks/:id
