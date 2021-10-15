@@ -6,12 +6,12 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "John",
+    "username": "Ha Tran",
     "husbandOfUserID": "6169dfa0a68524e67a5b3678"
 }
 
 ###
-DELETE http://localhost:3000/users/6169e3d3ee84c7b8b83073cb
+DELETE http://localhost:3000/users/6169e3f04eac5e8b7f1d3142
 
 
 ###
