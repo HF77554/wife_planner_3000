@@ -13,12 +13,12 @@ router.get('/', async (req, res) =>{
 
 router.post('/', async (req, res) =>{
     const user = new User({
-        name: req.body.name,
-        husbandOfUser: req.body.husbandOfUser
+        username: req.body.username,
+        husbandOfUserID: req.body.husbandOfUserID
     })
-
     try {
         const newUser = await user.save()
+        console.log(newUser)
         res.status(201).json(newUser)
     } catch (err) {
         res.status(400).json({message: err.message})

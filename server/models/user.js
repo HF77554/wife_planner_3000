@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true
     },
     husbandOfUserID: {
-        type: Object
+        type: String
     },
     subscribeDate: {
         type: Date,
