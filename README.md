@@ -1,5 +1,3 @@
-npm start
-
 tongue-in-cheek project for help in the daily life. We moved to a new place and my wife has a long set of chores for me. Instead of going bit by bit I want to create a todo list which I can improve in overtime. 
 
 Current criteria:
