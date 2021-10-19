@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bootstrap = require('./bootstrap');
 const routeSubscriber = require('./routes')
+const helmet = require('helmet');
 
 bootstrap()
   .then(async () => {
@@ -16,8 +17,8 @@ bootstrap()
     // convert payload to json
     app.use(express.json());
 
-    // subscribe routes
-    routeSubscriber(app);
+    // subscribe routes - wait for routes to be subscribed before starting server
+    await routeSubscriber(app);
     
     //listen to port
     app.listen(port, () => {

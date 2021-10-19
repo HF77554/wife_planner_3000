@@ -3,13 +3,12 @@ const path = require('path');
 
 module.exports = async (app) => {
     // Get list of routers
-    const files = await fs.readDir(__dirname);
+    const files = await fs.readdir(__dirname);
 
     //iterate through routers
     files.forEach(file => {
-
         // make sure the file is JS and not this file
-        if (!file == 'index.js' && file.endsWith('.js')) {
+        if (file != 'index.js' && file.endsWith('.js')) {
 
             // get route subscriber 
             routerSubscriber = require(path.join(__dirname, file));
