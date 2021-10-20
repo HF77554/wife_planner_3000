@@ -5,8 +5,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    userpassword: {
+        type: String,
+        required: true
+    },
     husbandOfUserID: {
-        type: String
+        type: Array
     },
     subscribeDate: {
         type: Date,
