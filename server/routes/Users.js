@@ -49,4 +49,6 @@ async function getUser(req, res, next) {
     next()
 }
 
-module.exports = router
+module.exports = (app) => {
+    app.use('/users', router);
+}

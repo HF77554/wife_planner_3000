@@ -1,20 +1,31 @@
-require('dotenv').config()
-const express = require('express')
-const app = express()
-const mongoose = require('mongoose')
-const port = 3000
+require('dotenv').config();
+const express = require('express');
+const bootstrap = require('./bootstrap');
+const routeSubscriber = require('./routes')
+const helmet = require('helmet');
 
+bootstrap()
+  .then(async () => {
+    const port = process.env.PORT || 3000;
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true  })
-const db = mongoose.connection
-db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('Connected to Database'))
+    const app = express();
 
-app.use(express.json())
+    // Set up security
+    app.use(helmet());
+    
 
-const userRouter = require('./routes/users')
-app.use('/users', userRouter)
+    // convert payload to json
+    app.use(express.json());
 
-app.listen(port, () => {
-  console.log(`Server is running`)
-})
+    // subscribe routes - wait for routes to be subscribed before starting server
+    await routeSubscriber(app);
+    
+    //listen to port
+    app.listen(port, () => {
+      console.log(`Server is running in port ${port}`)
+    });
+  })
+  .catch(error => {
+    console.error(`Error bootstrapping application`, error);
+    process.exit(1);
+  });
