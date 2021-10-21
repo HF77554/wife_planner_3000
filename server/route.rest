@@ -6,19 +6,19 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "username": "timothy",
-    "userpassword": "max",
+    "username": "hferstadt",
+    "userpassword": "1234",
     "husbandOfUserID": "6169dfa0a68524e67a5b3678"
 }
 
 ###
-DELETE http://localhost:3000/users/617096a9dc46a9f0614f566a
+DELETE http://localhost:3000/users/6171b27996af96081544b307
 
 ### 
 POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "username": "timothy",
-    "userpassword": "max"
+    "username": "hferstadt",
+    "userpassword": "1234"
 }
