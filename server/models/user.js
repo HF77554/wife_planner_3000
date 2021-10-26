@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     delegatedRoomID: {
-        type: Array
+        type: Array,
+        required: false
     },
     subscribeDate: {
         type: Date,

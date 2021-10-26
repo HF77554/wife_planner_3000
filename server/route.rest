@@ -2,27 +2,16 @@
 GET http://localhost:3000/users
 
 ### 
-POST http://localhost:3000/users
+POST http://localhost:3000/users/create
 Content-Type: application/json
 
 {
-<<<<<<< HEAD
-    "username": "timothy",
-    "userpassword": "max",
-    "delegatedRoomID": "6169dfa0a68524e67a5b3678"
+    "username": "Helga",
+    "userpassword": "Helga"
 }
 
 ###
-DELETE http://localhost:3000/users/61775a20abb77537c654d5fc
-=======
-    "username": "hferstadt",
-    "userpassword": "1234",
-    "husbandOfUserID": "6169dfa0a68524e67a5b3678"
-}
-
-###
-DELETE http://localhost:3000/users/6171b27996af96081544b307
->>>>>>> d3c01bc9141a37f33060e85bbebb8d7e51ccc92c
+DELETE http://localhost:3000/users/617865e216f095e4d447af4f
 
 ### 
 POST http://localhost:3000/users/login
@@ -34,4 +23,13 @@ Content-Type: application/json
 }
 
 ### 
-GET http://localhost:3000/room/12345
+GET http://localhost:3000/room
+
+### 
+POST http://localhost:3000/room/create
+Content-Type: application/json
+
+{
+    "adminID": "6177629846a0808ee61f18f4",
+    "delegatedTasks": ["item 1", "item 2"]
+}

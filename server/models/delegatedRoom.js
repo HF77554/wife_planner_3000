@@ -5,10 +5,6 @@ const delegatedRoom = new mongoose.Schema({
         type: String,
         required: true
     },
-    employeeID: {
-        type: String,
-        required: true
-    },
     delegatedTasks: {
         type: Array
     },

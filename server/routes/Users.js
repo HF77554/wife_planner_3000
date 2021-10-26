@@ -14,11 +14,10 @@ router.get('/', async (req, res) =>{
     }
 })
 
-router.post('/', async (req, res) =>{
+router.post('/create', async (req, res) =>{
     const user = new User({
         username: req.body.username,
-        userpassword: await encryption(req.body.userpassword),
-        delegatedRoomID: await encryption(req.body.delegatedRoomID)
+        userpassword: await encryption(req.body.userpassword)
     })
     try {
         const newUser = await user.save()
