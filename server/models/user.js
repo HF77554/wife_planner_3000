@@ -5,8 +5,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    husbandOfUserID: {
-        type: String
+    userpassword: {
+        type: String,
+        required: true
+    },
+    delegatedRoomID: {
+        type: Array,
+        required: false
     },
     subscribeDate: {
         type: Date,

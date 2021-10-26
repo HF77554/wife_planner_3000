@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
+const encryption = require('../encryption')
+const bcrypt = require('bcrypt')
+
 
 router.get('/', async (req, res) =>{
     try{
@@ -11,14 +14,13 @@ router.get('/', async (req, res) =>{
     }
 })
 
-router.post('/', async (req, res) =>{
+router.post('/create', async (req, res) =>{
     const user = new User({
         username: req.body.username,
-        husbandOfUserID: req.body.husbandOfUserID
+        userpassword: await encryption(req.body.userpassword)
     })
     try {
         const newUser = await user.save()
-        console.log(newUser)
         res.status(201).json(newUser)
     } catch (err) {
         res.status(400).json({message: err.message})
