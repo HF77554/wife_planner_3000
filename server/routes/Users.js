@@ -18,7 +18,7 @@ router.post('/', async (req, res) =>{
     const user = new User({
         username: req.body.username,
         userpassword: await encryption(req.body.userpassword),
-        husbandOfUserID: await encryption(req.body.husbandOfUserID)
+        delegatedRoomID: await encryption(req.body.delegatedRoomID)
     })
     try {
         const newUser = await user.save()
@@ -28,21 +28,7 @@ router.post('/', async (req, res) =>{
     }
 })
 
-router.post('/login', getUser, async (req, res) => {
-    console.log(req.params)
-    try {
-        if( bcrypt.compare(req.body.userpassword, user.userpassword)){
-            res.send('Success')
-        } else {
-            res.send('Not Allowed')
-        }
-
-    } catch (err) {
-        res.status(500).json({message: err.message})
-    }
-})
-
-router.delete('/:id', async (req, res) =>{
+router.delete('/:id', getUser, async (req, res) =>{
     try{
         await res.user.remove()
         res.json({message: 'Deleted subscriber'})
@@ -54,10 +40,7 @@ router.delete('/:id', async (req, res) =>{
 async function getUser(req, res, next) {
     let user;
     try {
-        let users = await User.find()
-        user = users.find(u => console.log(u.username))
-        console.log(req.params)
-
+        user = await User.findById(req.params.id)
         if (user == null){
             return res.status(404).json({ message: 'Cannot find subscriber' })
         } 

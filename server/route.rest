@@ -8,11 +8,11 @@ Content-Type: application/json
 {
     "username": "timothy",
     "userpassword": "max",
-    "husbandOfUserID": "6169dfa0a68524e67a5b3678"
+    "delegatedRoomID": "6169dfa0a68524e67a5b3678"
 }
 
 ###
-DELETE http://localhost:3000/users/617096a9dc46a9f0614f566a
+DELETE http://localhost:3000/users/61775a20abb77537c654d5fc
 
 ### 
 POST http://localhost:3000/users/login
@@ -22,3 +22,6 @@ Content-Type: application/json
     "username": "timothy",
     "userpassword": "max"
 }
+
+### 
+GET http://localhost:3000/room/12345

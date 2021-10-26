@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    husbandOfUserID: {
+    delegatedRoomID: {
         type: Array
     },
     subscribeDate: {
