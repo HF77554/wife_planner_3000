@@ -1,16 +1,14 @@
 import React from 'react'
 import {Navbar, Container} from 'react-bootstrap'
 
-const NavBar = () => {
+const NavBar = ({user}) => {
     return (
         <Navbar>
             <Container>
-                <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+                <Navbar.Brand href="/">Home Page</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                <Navbar.Text>
-                    Signed in as: <a href="#login">Mark Otto</a>
-                </Navbar.Text>
+                { user ? <Navbar.Text>Signed in as: {user.username} </Navbar.Text>: <Navbar.Text>User not logged in</Navbar.Text>}
                 </Navbar.Collapse>
             </Container>
         </Navbar>
