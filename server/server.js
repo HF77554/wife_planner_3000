@@ -3,12 +3,14 @@ const express = require('express');
 const bootstrap = require('./bootstrap');
 const routeSubscriber = require('./routes')
 const helmet = require('helmet');
+const cors = require("cors")
 
 bootstrap()
   .then(async () => {
-    const port = process.env.PORT || 3000;
+    const port = process.env.PORT || 4000;
 
     const app = express();
+    app.use(cors());
 
     // Set up security
     app.use(helmet());
