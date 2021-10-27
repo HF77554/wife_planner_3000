@@ -1,12 +1,19 @@
 import React from 'react'
+import {Navbar, Container} from 'react-bootstrap'
 
 const NavBar = () => {
     return (
-        <div>
-            <nav class="navbar navbar-light bg-light">
-                <span class="navbar-brand mb-0 h1">Navbar</span>
-            </nav>
-        </div>
+        <Navbar>
+            <Container>
+                <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+                <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
+                <Navbar.Text>
+                    Signed in as: <a href="#login">Mark Otto</a>
+                </Navbar.Text>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     )
 }
 
