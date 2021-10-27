@@ -24,6 +24,30 @@ router.post('/create', async (req, res) =>{
     }
 })
 
+router.delete('/:id', getRoom, async (req, res) =>{
+    try{
+        await res.room.remove()
+        res.json({message: 'Deleted room'})
+    } catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
+
+async function getRoom(req, res, next) {
+    let room;
+    try {
+        room = await delegatedRooms.findById(req.params.id)
+        if (room == null){
+            return res.status(404).json({ message: 'Cannot find room' })
+        } 
+    } catch (err) {
+        return res.status(500).json( { message: err.message } )
+    }
+
+    res.room = room
+    next()
+}
+
 module.exports = (app) => {
     app.use('/room', router);
 }

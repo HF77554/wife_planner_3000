@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const encryption = require('../encryption')
-const bcrypt = require('bcrypt')
+const authenticateToken = require('../authenticateToken')
 
-
-router.get('/', async (req, res) =>{
+router.get('/', authenticateToken, async (req, res) =>{
     try{
         const users = await User.find()
-        res.json(users)
+        //res.json(users)
+        res.json(users.filter(u => u.username === req.user.name))
     } catch (err) {
         res.status(500).json({message:err.message})
     }
@@ -27,7 +27,7 @@ router.post('/create', async (req, res) =>{
     }
 })
 
-router.delete('/:id', getUser, async (req, res) =>{
+router.delete('/:id', authenticateToken, getUser, async (req, res) =>{
     try{
         await res.user.remove()
         res.json({message: 'Deleted subscriber'})

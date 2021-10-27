@@ -1,0 +1,13 @@
+GET http://localhost:3000/room
+
+### 
+POST http://localhost:3000/room/create
+Content-Type: application/json
+
+{
+    "adminID": "6177629846a0808ee61f18f4",
+    "delegatedTasks": ["item 1", "item 2"]
+}
+
+###
+DELETE http://localhost:3000/room/6179b3a5ef182f9a0acf4d85

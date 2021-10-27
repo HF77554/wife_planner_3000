@@ -1,0 +1,16 @@
+
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSGVsZ2EiLCJpYXQiOjE2MzUzNjc5MTV9.MHz57ttQs9n5mEDw9ACDt3r3Rymtxznx_tevuZS_cZM
+
+### 
+POST http://localhost:3000/users/create
+Content-Type: application/json
+
+{
+    "username": "John",
+    "userpassword": "John"
+}
+
+###
+DELETE http://localhost:3000/users/6179b9f4951b1849fac16a98
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiIsImlhdCI6MTYzNTM2NzgxMH0.lFxp77CUMzo_FD_ev4Za83vYWalv5bELqhsAjsAmmSk
