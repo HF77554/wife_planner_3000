@@ -1,18 +1,24 @@
 import React from 'react'
-import {Navbar, Container} from 'react-bootstrap'
+import {Navbar, Container, Nav} from 'react-bootstrap'
+import { Link } from "react-router-dom";
 
-const NavBar = ({user}) => {
+const NavBar = () => {
     return (
-        <Navbar>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="/">Home Page</Navbar.Brand>
-                <Navbar.Toggle />
-                <Navbar.Collapse className="justify-content-end">
-                { user ? <Navbar.Text>Signed in as: {user.username} </Navbar.Text>: <Navbar.Text>User not logged in</Navbar.Text>}
-                </Navbar.Collapse>
+                <Navbar.Brand>
+                    <Link to={"/home"} className="nav-link">Home</Link>
+                </Navbar.Brand>
+                <Nav className="me-auto">
+                    <Link to={"/Profile"} className="nav-link">Profile</Link>
+                </Nav>
+                <Nav>
+                    <Link to={"/login"} className="nav-link">Login</Link>
+                </Nav>
             </Container>
         </Navbar>
     )
 }
 
 export default NavBar
+

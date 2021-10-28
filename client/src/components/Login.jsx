@@ -1,21 +1,36 @@
 import React from 'react'
 import {useState} from 'react'
 import {Form, Button} from 'react-bootstrap'
+import AuthService from "../services/auth.service";
+import { useHistory } from "react-router-dom";
 
-const SignIn = ({onSignIn}) => {
+const Login = () => {
+    let history = useHistory();
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [userpassword, setUserpassword] = useState("");
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if (!username || !password) {
+        if (!username || !userpassword) {
         alert("Missing a value, please add all elements in form");
         return;
         }
-
-        onSignIn({username, password})
-        setUsername("");
-        setPassword("");
+        try {
+            AuthService.login(username, userpassword).then(
+                () => {
+                    history.push("/profile")
+                    window.location.reload();
+                },
+                (err) => {
+                    console.log({err:err})
+                }
+              );
+            setUsername("");
+            setUserpassword("");
+        } catch (err) {
+            console.log({err:err})
+        }
+    
     };
 
     return (
@@ -27,7 +42,7 @@ const SignIn = ({onSignIn}) => {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <Form.Control type="password" placeholder="Password" value={userpassword} onChange={(e) => setUserpassword(e.target.value)} />
             </Form.Group>
             <Button variant="primary" type="submit">
                 Submit
@@ -37,4 +52,4 @@ const SignIn = ({onSignIn}) => {
 }
 
 
-export default SignIn
+export default Login

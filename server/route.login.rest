@@ -1,4 +1,4 @@
-POST http://localhost:4000/users/login
+POST http://localhost:4000/login
 Content-Type: application/json
 
 {

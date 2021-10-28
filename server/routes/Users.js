@@ -13,19 +13,6 @@ router.get('/', authenticateToken, async (req, res) =>{
     }
 })
 
-router.post('/create', async (req, res) =>{
-    const user = new User({
-        username: req.body.username,
-        userpassword: await encryption(req.body.userpassword)
-    })
-    try {
-        const newUser = await user.save()
-        res.status(201).json(newUser)
-    } catch (err) {
-        res.status(400).json({message: err.message})
-    }
-})
-
 router.delete('/:id', authenticateToken, getUser, async (req, res) =>{
     try{
         await res.user.remove()

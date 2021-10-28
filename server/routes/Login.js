@@ -37,5 +37,5 @@ async function getUserInfo(req, res, next) {
 }
 
 module.exports = (app) => {
-    app.use('/users/login', router);
+    app.use('/login', router);
 }

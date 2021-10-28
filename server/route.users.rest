@@ -3,7 +3,7 @@ GET http://localhost:4000/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSGVsZ2EiLCJpYXQiOjE2MzUzNzI2OTN9.Le__7aCGjEwQ_yZi_Kejxm_IQT7Okicc5pnB6ok_Cws
 
 ### 
-POST http://localhost:4000/users/create
+POST http://localhost:4000/register
 Content-Type: application/json
 
 {

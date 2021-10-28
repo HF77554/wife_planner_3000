@@ -1,9 +1,11 @@
-import AuthenticationPage from "./components/AuthenticationPage";
+import RouterPage from "./components/RouterPage";
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <AuthenticationPage />
+      <RouterPage />
     </div>
   );
 }
