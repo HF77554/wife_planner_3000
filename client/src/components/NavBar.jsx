@@ -1,8 +1,9 @@
+import Button from '@restart/ui/esm/Button';
 import React from 'react'
 import {Navbar, Container, Nav} from 'react-bootstrap'
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({onVerifiedUser, onLogOut}) => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -12,9 +13,18 @@ const NavBar = () => {
                 <Nav className="me-auto">
                     <Link to={"/Profile"} className="nav-link">Profile</Link>
                 </Nav>
-                <Nav>
-                    <Link to={"/login"} className="nav-link">Login</Link>
-                </Nav>
+                {
+                    onVerifiedUser ? 
+                    <Nav>
+                        <Button onClick={onLogOut}>
+                            LogOut
+                        </Button>
+                    </Nav>
+                    :
+                    <Nav>
+                        <Link to={"/login"} className="nav-link">Login</Link>
+                    </Nav>
+                }
             </Container>
         </Navbar>
     )

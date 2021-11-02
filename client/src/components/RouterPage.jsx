@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import { Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import NavBar from './NavBar'
 
 import AuthService from "../services/auth.service";
@@ -10,28 +10,31 @@ import Login from "./Login";
 import Profile from "./Profile";
 
 const RouterPage = () => {
-    const [currentUser, setCurrentUser] = useState(undefined);
+    let history = useHistory();
+    const [userVerification, userVerificationTask] = useState(false);
 
     useEffect(() => {
-        const user = AuthService.getCurrentUser();
-
-        if (user) {
-            setCurrentUser(user);
+        const verifiedUser = AuthService.getCurrentUser();
+        if (verifiedUser) {
+            userVerificationTask(true);
         }
     }, []);
 
 
     const logOut = () => {
         AuthService.logout();
+        userVerificationTask(false)
+        history.push("/home")
+        window.location.reload()
     };
 
     return (
         <div>
-            <NavBar />
+            <NavBar onVerifiedUser={userVerification} onLogOut={() => logOut()}/>
             <div className="container mt-3">
                 <Route exact path={["/", "/home"]} component={Home} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="/profile" render={() => <Profile currentUser={currentUser} />} />
+                <Route exact path="/profile" component={Profile} />
             </div>
         </div>
     )

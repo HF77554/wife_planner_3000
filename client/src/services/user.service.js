@@ -3,13 +3,16 @@ import authHeader from "./auth-header";
 
 const DATABASE_URL = "http://localhost:4000/";
 
-const getUserInfo = () => {
-  return axios.get(DATABASE_URL + "users", { Authorization: authHeader() });
+const getUserInfo = async () => {
+  try {
+    const res = await axios.get(DATABASE_URL + "users", { headers: {"Authorization" : authHeader()} })
+    const data = res.data[0]
+    return data
+  } catch (err) {
+    console.log({err:err})
+  }
 };
 
-const getAdminBoard = () => {
-  return axios.get(DATABASE_URL + "admin", { headers: authHeader() });
-};
 
 export default {
   getUserInfo
