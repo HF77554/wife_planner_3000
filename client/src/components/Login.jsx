@@ -34,19 +34,20 @@ const Login = () => {
     };
 
     return (
-        <Form className="sign_in_class_container" onSubmit={onSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicText">
+        <Form className="login_class_container" onSubmit={onSubmit}>
+            <Form.Group className="login_form_input" controlId="formBasicText">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-1" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" value={userpassword} onChange={(e) => setUserpassword(e.target.value)} />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button className="btn-lg" variant="primary" type="submit">
                 Submit
             </Button>
+            
         </Form>
     )
 }

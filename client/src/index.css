@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.sign_in_class_container{
+.login_class_container{
   max-width: 400px;
   position: relative;
   margin: auto;
@@ -20,4 +20,6 @@ code {
   right: 0;
   bottom: 0;
   left: 0;
+  font-size: 24px;
 }
+

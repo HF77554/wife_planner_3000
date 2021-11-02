@@ -16,10 +16,12 @@ const Profile = () => {
   return (
     <div className="container">
       <header className="jumbotron">  
-        <h1>Profile</h1>  
-        {!userInfo ? 'Please Login' : 
+        <h2>Profile</h2>  
+        {!userInfo ? 
+          <p>Please Login for access to user information...</p>
+          : 
           <div>
-            <h2>{userInfo.username}</h2>
+            <h3>{userInfo.username}</h3>
             <h3>{userInfo.subscribeDate}</h3>
           </div>
         }     
