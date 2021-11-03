@@ -3,6 +3,7 @@ import {useState} from 'react'
 import {Form, Button} from 'react-bootstrap'
 import AuthService from "../services/auth.service";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     let history = useHistory();
@@ -47,7 +48,7 @@ const Login = () => {
             <Button className="btn-lg" variant="primary" type="submit">
                 Submit
             </Button>
-            
+            <Link to={"/Home"} className="nav-link">No Profile? Click Here to Sign up!</Link>
         </Form>
     )
 }
