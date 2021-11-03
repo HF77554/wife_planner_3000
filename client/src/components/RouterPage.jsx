@@ -11,7 +11,7 @@ import Profile from "./Profile";
 
 const RouterPage = () => {
     let history = useHistory();
-    const [userVerification, userVerificationTask] = useState(false);
+    const [userVerification, userVerificationTask] = useState(true);
 
     useEffect(() => {
         const verifiedUser = AuthService.getCurrentUser();
@@ -30,7 +30,7 @@ const RouterPage = () => {
 
     return (
         <div>
-            <NavBar onVerifiedUser={userVerification} onLogOut={() => logOut()}/>
+            <NavBar fixed="top" onVerifiedUser={userVerification} onLogOut={() => logOut()}/>
             <div className="container mt-3">
                 <Route exact path={["/", "/home"]} component={Home} />
                 <Route exact path="/login" component={Login} />
