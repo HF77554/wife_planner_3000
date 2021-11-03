@@ -1,23 +1,29 @@
 import Button from '@restart/ui/esm/Button';
 import React from 'react'
 import {Navbar, Container, Nav} from 'react-bootstrap'
-import { Link } from "react-router-dom";
+import {LinkContainer} from 'react-router-bootstrap'
 
 const NavBar = ({onVerifiedUser, onLogOut}) => {
     return (
         <Navbar bg="dark" variant="dark">
-            <Container>
+            <Container className="mb-1 h2">
                 <Navbar.Brand href="/Home">LOGO</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link href="/Home">Home</Nav.Link>
-                    <Nav.Link href="/Profile">Profile</Nav.Link>
-                    <div className="d-flex">
+                    <LinkContainer to="/Home">
+                        <Nav.Link>Home</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/Profile">
+                        <Nav.Link>Profile</Nav.Link>
+                    </LinkContainer>
+                    <div>
                         {onVerifiedUser ? 
                             <Button onClick={onLogOut}>
                                 LogOut
                             </Button>
                             :
-                            <Nav.Link href="/Login">Login</Nav.Link>
+                            <LinkContainer to="/Login">
+                                <Nav.Link>Login</Nav.Link>
+                            </LinkContainer>
                         }
                     </div>
                 </Nav>

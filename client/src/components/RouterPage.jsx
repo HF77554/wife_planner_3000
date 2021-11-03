@@ -11,7 +11,7 @@ import Profile from "./Profile";
 
 const RouterPage = () => {
     let history = useHistory();
-    const [userVerification, userVerificationTask] = useState(true);
+    const [userVerification, userVerificationTask] = useState(false);
 
     useEffect(() => {
         const verifiedUser = AuthService.getCurrentUser();
