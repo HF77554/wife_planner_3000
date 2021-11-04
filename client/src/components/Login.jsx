@@ -5,7 +5,7 @@ import AuthService from "../services/auth.service";
 import { useHistory} from "react-router-dom";
 import {LinkContainer} from 'react-router-bootstrap'
 
-const Login = () => {
+const Login = ({onLogin}) => {
     let history = useHistory();
     const [username, setUsername] = useState("");
     const [userpassword, setUserpassword] = useState("");
@@ -16,6 +16,10 @@ const Login = () => {
         alert("Missing a value, please add all elements in form");
         return;
         }
+        const onReset = () =>{
+            setUsername("");
+            setUserpassword("");
+        }
         try {
             AuthService.login(username, userpassword).then(
                 () => {
@@ -24,9 +28,7 @@ const Login = () => {
                 (err) => {
                     console.log({err:err})
                 }
-              );
-            setUsername("");
-            setUserpassword("");
+              ).then(onReset()).then(onLogin)
         } catch (err) {
             console.log({err:err})
         }

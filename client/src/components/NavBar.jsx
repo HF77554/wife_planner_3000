@@ -27,13 +27,13 @@ const NavBar = ({onVerifiedUser, onLogOut}) => {
                 <Nav>
                     <Row>
                         <Col>
-                            <LinkContainer to="/Profile">
+                            <LinkContainer to="/SignUp">
                                 <Nav.Link>SignUp</Nav.Link>
                             </LinkContainer>
                         </Col>
                         <Col>
                             {onVerifiedUser ? 
-                                <Button onClick={onLogOut}>
+                                <Button className="m-1 bg-danger text-white" onClick={onLogOut}>
                                     LogOut
                                 </Button>
                                 :

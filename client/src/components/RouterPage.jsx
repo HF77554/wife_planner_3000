@@ -3,11 +3,14 @@ import {useState, useEffect} from 'react'
 import { Route, useHistory } from "react-router-dom";
 import NavBar from './NavBar'
 
+//Auth functions
 import AuthService from "../services/auth.service";
 
+//components
 import Home from "./Home";
 import Login from "./Login";
 import Profile from "./Profile";
+import SignUp from "./SignUp";
 
 const RouterPage = () => {
     let history = useHistory();
@@ -18,14 +21,19 @@ const RouterPage = () => {
         if (verifiedUser) {
             userVerificationTask(true);
         }
-    }, []);
+    });
 
+    const LogIn = () => {
+        const verifiedUser = AuthService.getCurrentUser();
+        if (verifiedUser) {
+            userVerificationTask(true);
+        }
+    };
 
     const logOut = () => {
         AuthService.logout();
         userVerificationTask(false)
         history.push("/home")
-        window.location.reload()
     };
 
     return (
@@ -33,8 +41,9 @@ const RouterPage = () => {
             <NavBar fixed="top" onVerifiedUser={userVerification} onLogOut={() => logOut()}/>
             <div className="container mt-3">
                 <Route exact path={["/", "/home"]} component={Home} />
-                <Route exact path="/login" component={Login} />
+                <Route exact path="/login" component={() => (<Login onLogin={() => LogIn()} />)}/>
                 <Route exact path="/profile" component={Profile} />
+                <Route exact path="/signup" component={SignUp} />
             </div>
         </div>
     )
