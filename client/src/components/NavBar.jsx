@@ -1,31 +1,48 @@
 import Button from '@restart/ui/esm/Button';
 import React from 'react'
-import {Navbar, Container, Nav} from 'react-bootstrap'
+import {Navbar, Container, Nav, Col, Row} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 
 const NavBar = ({onVerifiedUser, onLogOut}) => {
     return (
         <Navbar bg="dark" variant="dark">
-            <Container className="mb-1 h2">
-                <Navbar.Brand href="/Home">LOGO</Navbar.Brand>
+            <LinkContainer to="/Home">
+                <Navbar.Brand>LOGO</Navbar.Brand>
+            </LinkContainer>
+            <Container className="mb-1 h4">
                 <Nav className="me-auto">
-                    <LinkContainer to="/Home">
-                        <Nav.Link>Home</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/Profile">
-                        <Nav.Link>Profile</Nav.Link>
-                    </LinkContainer>
-                    <div>
-                        {onVerifiedUser ? 
-                            <Button onClick={onLogOut}>
-                                LogOut
-                            </Button>
-                            :
-                            <LinkContainer to="/Login">
-                                <Nav.Link>Login</Nav.Link>
+                    <Row>
+                        <Col>
+                            <LinkContainer to="/Home">
+                                <Nav.Link>Home</Nav.Link>
                             </LinkContainer>
-                        }
-                    </div>
+                        </Col>
+                        <Col>
+                            <LinkContainer to="/Profile">
+                                <Nav.Link>Profile</Nav.Link>
+                            </LinkContainer>
+                        </Col>
+                    </Row>
+                </Nav>
+                <Nav>
+                    <Row>
+                        <Col>
+                            <LinkContainer to="/Profile">
+                                <Nav.Link>SignUp</Nav.Link>
+                            </LinkContainer>
+                        </Col>
+                        <Col>
+                            {onVerifiedUser ? 
+                                <Button onClick={onLogOut}>
+                                    LogOut
+                                </Button>
+                                :
+                                <LinkContainer to="/Login">
+                                    <Nav.Link>Login</Nav.Link>
+                                </LinkContainer>
+                            }
+                        </Col>                  
+                    </Row>
                 </Nav>
             </Container>
         </Navbar>

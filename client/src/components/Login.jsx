@@ -1,9 +1,9 @@
 import React from 'react'
 import {useState} from 'react'
-import {Form, Button} from 'react-bootstrap'
+import {Form, Button, Nav} from 'react-bootstrap'
 import AuthService from "../services/auth.service";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useHistory} from "react-router-dom";
+import {LinkContainer} from 'react-router-bootstrap'
 
 const Login = () => {
     let history = useHistory();
@@ -20,7 +20,6 @@ const Login = () => {
             AuthService.login(username, userpassword).then(
                 () => {
                     history.push("/profile")
-                    window.location.reload();
                 },
                 (err) => {
                     console.log({err:err})
@@ -35,21 +34,30 @@ const Login = () => {
     };
 
     return (
-        <Form className="login_class_container" onSubmit={onSubmit}>
-            <Form.Group className="login_form_input" controlId="formBasicText">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
-            </Form.Group>
+        <div className='login_class_container jumbotron'>
+            <Form onSubmit={onSubmit}>
+                
+                <Form.Group className="login_form_input mb-3" controlId="formBasicText">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                </Form.Group>
 
-            <Form.Group className="mb-1" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" value={userpassword} onChange={(e) => setUserpassword(e.target.value)} />
-            </Form.Group>
-            <Button className="btn-lg" variant="primary" type="submit">
-                Submit
-            </Button>
-            <Link to={"/Home"} className="nav-link">No Profile? Click Here to Sign up!</Link>
-        </Form>
+                <Form.Group className="login_form_input mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" value={userpassword} onChange={(e) => setUserpassword(e.target.value)} />
+                </Form.Group>
+
+                <Button className="m-6 btn-lg" variant="primary" type="submit">
+                    Submit
+                </Button>
+
+            </Form>
+
+            <LinkContainer to="/Home">
+                    <Nav.Link className='text-center h5 mt-5'>No Profile? Click Here to Sign up!</Nav.Link>
+            </LinkContainer>
+
+        </div>
     )
 }
 
