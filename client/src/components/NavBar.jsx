@@ -18,8 +18,18 @@ const NavBar = ({onVerifiedUser, onLogOut}) => {
                             </LinkContainer>
                         </Col>
                         <Col>
-                            <LinkContainer to="/Profile">
+                            <LinkContainer to="/profile">
                                 <Nav.Link>Profile</Nav.Link>
+                            </LinkContainer>
+                        </Col>
+                        <Col>
+                            <LinkContainer to="/planner">
+                                <Nav.Link>Planner</Nav.Link>
+                            </LinkContainer>
+                        </Col>
+                        <Col>
+                            <LinkContainer to="/contact">
+                                <Nav.Link>Contact</Nav.Link>
                             </LinkContainer>
                         </Col>
                     </Row>

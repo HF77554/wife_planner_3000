@@ -5,12 +5,13 @@ import UserService from "../services/user.service";
 const Profile = () => {
   const [userInfo, userInfoTask] = useState();
 
+  //not the most efficient, use only when user is Auth
   useEffect(async () => {
     const user = await UserService.getUserInfo();
     if (user) {
       userInfoTask(user)
     }
-    }, []);
+  }, []);
 
 
   return (

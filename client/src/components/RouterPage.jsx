@@ -10,16 +10,20 @@ import AuthService from "../services/auth.service";
 import Home from "./Home";
 import Login from "./Login";
 import Profile from "./Profile";
+import Planner from "./Todo/Planner";
+import ContactUs from "./ContactUs";
 import SignUp from "./SignUp";
 
 const RouterPage = () => {
     let history = useHistory();
-    const [userVerification, userVerificationTask] = useState(false);
+    const [userVerification, userVerificationTask] = useState(true);
 
     useEffect(() => {
         const verifiedUser = AuthService.getCurrentUser();
         if (verifiedUser) {
             userVerificationTask(true);
+        } else {
+            //userVerificationTask(false)
         }
     });
 
@@ -43,6 +47,8 @@ const RouterPage = () => {
                 <Route exact path={["/", "/home"]} component={Home} />
                 <Route exact path="/login" component={() => (<Login onLogin={() => LogIn()} />)}/>
                 <Route exact path="/profile" component={Profile} />
+                <Route exact path="/planner" component={() => (<Planner userAuth={userVerification} />)} />
+                <Route exact path="/contact" component={ContactUs} />
                 <Route exact path="/signup" component={SignUp} />
             </div>
         </div>

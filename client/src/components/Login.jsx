@@ -13,7 +13,7 @@ const Login = ({onLogin}) => {
     const onSubmit = (e) => {
         e.preventDefault();
         if (!username || !userpassword) {
-        alert("Missing a value, please add all elements in form");
+        alert("Missing a value in form, please fill all elements in form");
         return;
         }
         const onReset = () =>{
@@ -49,13 +49,13 @@ const Login = ({onLogin}) => {
                     <Form.Control type="password" placeholder="Password" value={userpassword} onChange={(e) => setUserpassword(e.target.value)} />
                 </Form.Group>
 
-                <Button className="m-6 btn-lg" variant="primary" type="submit">
+                <Button className="m-6 btn-lg" type="submit">
                     Submit
                 </Button>
 
             </Form>
 
-            <LinkContainer to="/Home">
+            <LinkContainer to="/signup">
                     <Nav.Link className='text-center h5 mt-5'>No Profile? Click Here to Sign up!</Nav.Link>
             </LinkContainer>
 
