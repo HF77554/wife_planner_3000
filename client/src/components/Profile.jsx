@@ -22,7 +22,7 @@ const Profile = () => {
     <div className="container">
       <header className="jumbotron">  
         <h2>Profile</h2>  
-        {!userInfo ? 
+        {!userInfo ?
           <p>Please Login for access to user information...</p>
           : 
           <div>

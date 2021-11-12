@@ -10,7 +10,7 @@ import AuthService from "../services/auth.service";
 import Home from "./Home";
 import Login from "./Login";
 import Profile from "./Profile";
-import Planner from "./Todo/Planner";
+import Planner from "./Planner/Planner";
 import ContactUs from "./ContactUs";
 import SignUp from "./SignUp";
 
@@ -46,9 +46,9 @@ const RouterPage = () => {
             <div className="container mt-3">
                 <Route exact path={["/", "/home"]} component={Home} />
                 <Route exact path="/login" component={() => (<Login onLogin={() => LogIn()} />)}/>
-                <Route exact path="/profile" component={() => (<Profile userAuth={userVerification} />)}/>
-                <Route exact path="/planner" component={Planner} />
-                <Route exact path="/contact" component={ContactUs} />
+                <Route exact path="/profile" component={Profile}/>
+                <Route exact path="/planner" component={() => (<Planner userAuth={userVerification} />)}/>
+                <Route exact path="/contactUs" component={ContactUs} />
                 <Route exact path="/signup" component={SignUp} />
             </div>
         </div>

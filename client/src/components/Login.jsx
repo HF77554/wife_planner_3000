@@ -58,7 +58,6 @@ const Login = ({onLogin}) => {
             <LinkContainer to="/signup">
                     <Nav.Link className='text-center h5 mt-5'>No Profile? Click Here to Sign up!</Nav.Link>
             </LinkContainer>
-
         </div>
     )
 }
