@@ -1,19 +1,20 @@
 
 GET http://localhost:4000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiIsImlhdCI6MTYzNTg3OTIzNH0.ncCGWZ_d96W4Efqar1wAjrsuFzJdplnR74ZJ5rAxIDU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiIsImlhdCI6MTYzNjczODUyMn0.zpmpRT4QKPVgtYRDVTSjXs0XDtQ3xHPngPjQ_JA_yvI
 
 ### 
 POST http://localhost:4000/register
 Content-Type: application/json
 
 {
-    "username": "John",
-    "userpassword": "John"
+    "username": "admin",
+    "email":"admin@gmail.com",
+    "userpassword": "admin"
 }
 
 ###
-DELETE http://localhost:4000/users/618186cd8c25acbafe492d18
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiIsImlhdCI6MTYzNTM2NzgxMH0.lFxp77CUMzo_FD_ev4Za83vYWalv5bELqhsAjsAmmSk
+DELETE http://localhost:4000/users/618ea9692a1875d70f30fe69
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiIsImlhdCI6MTYzNjczODUyMn0.zpmpRT4QKPVgtYRDVTSjXs0XDtQ3xHPngPjQ_JA_yvI
 
 ###
 GET http://localhost:4000/users

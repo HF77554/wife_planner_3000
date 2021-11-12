@@ -16,14 +16,14 @@ import SignUp from "./SignUp";
 
 const RouterPage = () => {
     let history = useHistory();
-    const [userVerification, userVerificationTask] = useState(true);
+    const [userVerification, userVerificationTask] = useState(false);
 
     useEffect(() => {
         const verifiedUser = AuthService.getCurrentUser();
         if (verifiedUser) {
             userVerificationTask(true);
         } else {
-            //userVerificationTask(false)
+            userVerificationTask(false)
         }
     });
 
@@ -46,8 +46,8 @@ const RouterPage = () => {
             <div className="container mt-3">
                 <Route exact path={["/", "/home"]} component={Home} />
                 <Route exact path="/login" component={() => (<Login onLogin={() => LogIn()} />)}/>
-                <Route exact path="/profile" component={Profile} />
-                <Route exact path="/planner" component={() => (<Planner userAuth={userVerification} />)} />
+                <Route exact path="/profile" component={() => (<Profile userAuth={userVerification} />)}/>
+                <Route exact path="/planner" component={Planner} />
                 <Route exact path="/contact" component={ContactUs} />
                 <Route exact path="/signup" component={SignUp} />
             </div>

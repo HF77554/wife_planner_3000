@@ -1,16 +1,20 @@
 import React, {useState} from 'react'
 import {Form, Button, Nav} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
+import AuthService from "../services/auth.service";
+import { useHistory} from "react-router-dom";
 
 const SignUp = () => {
+    let history = useHistory();
     const [username, setUsername] = useState("");
     const [userpassword, setUserpassword] = useState("");
+    const [email, setEmail] = useState("");
     const [passwordVerification, passwordVerificationTask] = useState("");
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if (!username || !userpassword || !passwordVerification) {
+        if (!username || !userpassword || !passwordVerification || !email) {
         alert("Missing a value in form, please fill all elements in form");
         return;
         }
@@ -25,8 +29,21 @@ const SignUp = () => {
             setUsername("");
             setUserpassword("");
             passwordVerificationTask("")
+            setEmail("")
         }
-        onReset()
+
+        try {
+            AuthService.register(username, userpassword, email).then(
+                () => {
+                    history.push("/login")
+                },
+                (err) => {
+                    console.log({err:err})
+                }
+              ).then(onReset())
+        } catch (err) {
+            console.log({err:err})
+        }
     };
 
 
@@ -36,7 +53,7 @@ const SignUp = () => {
                 
                 <Form.Group className="login_form_input mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}/>
                 </Form.Group>
 
                 <Form.Group className="login_form_input mb-3" controlId="formBasicText">

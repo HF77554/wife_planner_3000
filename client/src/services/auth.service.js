@@ -2,10 +2,11 @@ import axios from "axios";
 
 const SERVER_URL = "http://localhost:4000/";
 
-const register = (username, userpassword) => {
+const register = (username, userpassword, email) => {
   return axios.post(SERVER_URL + "register", {
     username,
     userpassword,
+    email
   });
 };
 

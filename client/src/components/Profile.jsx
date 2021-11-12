@@ -5,13 +5,17 @@ import UserService from "../services/user.service";
 const Profile = () => {
   const [userInfo, userInfoTask] = useState();
 
-  //not the most efficient, use only when user is Auth
   useEffect(async () => {
     const user = await UserService.getUserInfo();
     if (user) {
       userInfoTask(user)
     }
   }, []);
+
+  const dateConverter = (date) => {
+    const parseDate = new Date(date).toString();
+    return parseDate
+  }
 
 
   return (
@@ -22,8 +26,9 @@ const Profile = () => {
           <p>Please Login for access to user information...</p>
           : 
           <div>
-            <h3>{userInfo.username}</h3>
-            <h3>{userInfo.subscribeDate}</h3>
+            <h4>{userInfo.username}</h4>
+            <h4>{userInfo.email}</h4>
+            <h5>{dateConverter(userInfo.subscribeDate)}</h5>
           </div>
         }     
       </header>

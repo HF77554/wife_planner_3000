@@ -6,7 +6,8 @@ const encryption = require('../encryption')
 router.post('/register', async (req, res) =>{
     const user = new User({
         username: req.body.username,
-        userpassword: await encryption(req.body.userpassword)
+        userpassword: await encryption(req.body.userpassword),
+        email: req.body.email
     })
     try {
         const newUser = await user.save()

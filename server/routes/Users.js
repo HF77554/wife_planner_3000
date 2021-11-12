@@ -7,6 +7,7 @@ const authenticateToken = require('../authenticateToken')
 router.get('/', authenticateToken, async (req, res) =>{
     try{
         const users = await User.find()
+        //res.json(users)
         res.json(users.filter(u => u.username === req.user.name))
     } catch (err) {
         res.status(500).json({message:err.message})
