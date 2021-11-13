@@ -19,7 +19,8 @@ const RouterPage = () => {
     const [userVerification, userVerificationTask] = useState(false);
 
     useEffect(() => {
-        const verifiedUser = AuthService.getCurrentUser();
+        //const verifiedUser = AuthService.getCurrentUser();
+        const verifiedUser = true;
         if (verifiedUser) {
             userVerificationTask(true);
         } else {
