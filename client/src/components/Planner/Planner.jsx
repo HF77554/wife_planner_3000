@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import RoomSelection from './RoomSelection/RoomSelection'
 
-function Planner() {
+function Planner({onVerifiedUser}) {
     const [roomSelected, roomSelectedTask] = useState()
     return (
         <div className="jumbotron">
             <h2>Planner</h2>
-            {roomSelected ?
+            {roomSelected && onVerifiedUser ?
                 "RoomDisplay"
             :
                 <RoomSelection />

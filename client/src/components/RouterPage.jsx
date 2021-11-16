@@ -19,8 +19,7 @@ const RouterPage = () => {
     const [userVerification, userVerificationTask] = useState(false);
 
     useEffect(() => {
-        //const verifiedUser = AuthService.getCurrentUser();
-        const verifiedUser = true;
+        const verifiedUser = AuthService.getCurrentUser();
         if (verifiedUser) {
             userVerificationTask(true);
         } else {
@@ -48,7 +47,7 @@ const RouterPage = () => {
                 <Route exact path={["/", "/home"]} component={Home} />
                 <Route exact path="/login" component={() => (<Login onLogin={() => LogIn()} />)}/>
                 <Route exact path="/profile" component={Profile}/>
-                <Route exact path="/planner" component={() => (<Planner userAuth={userVerification} />)}/>
+                <Route exact path="/planner" component={() => (<Planner onVerifiedUser={userVerification} />)}/>
                 <Route exact path="/contactUs" component={ContactUs} />
                 <Route exact path="/signup" component={SignUp} />
             </div>
