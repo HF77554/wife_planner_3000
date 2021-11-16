@@ -22,20 +22,20 @@ const NavBar = ({onVerifiedUser, onLogOut}) => {
                             <Nav.Link>Contact</Nav.Link>
                             </LinkContainer>
                         </Col>
-                        <Col>
-                            <LinkContainer to="/profile">
-                                <Nav.Link>Profile</Nav.Link>
-                            </LinkContainer>
-                        </Col>
+                        {onVerifiedUser ?
+                            <Col>
+                                <LinkContainer to="/profile">
+                                    <Nav.Link>Profile</Nav.Link>
+                                </LinkContainer>
+                            </Col>
+                        : ''}
                         {onVerifiedUser ?
                             <Col>
                                 <LinkContainer to="/planner">
                                     <Nav.Link>Planner</Nav.Link>
                                 </LinkContainer>
                             </Col>
-                            :
-                            ""
-                        }
+                        : ''}
                     </Row>
                 </Nav>
                 <Nav>

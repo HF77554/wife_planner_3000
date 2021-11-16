@@ -23,7 +23,7 @@ const Login = ({onLogin}) => {
         try {
             AuthService.login(username, userpassword).then(
                 () => {
-                    history.push("/profile")
+                    history.push("/planner")
                 },
                 (err) => {
                     console.log({err:err})
