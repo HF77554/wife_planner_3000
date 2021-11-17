@@ -9,6 +9,7 @@ const Profile = () => {
     const user = await UserService.getUserInfo();
     if (user) {
       userInfoTask(user)
+      console.log(userInfo)
     }
   }, []);
 
@@ -29,6 +30,13 @@ const Profile = () => {
             <h4>{userInfo.username}</h4>
             <h4>{userInfo.email}</h4>
             <h5>{dateConverter(userInfo.subscribeDate)}</h5>
+            <div>
+              {userInfo.delegatedRoomID.map((roomID) => (
+                <div>
+                  roomID
+                </div>
+              ))}
+          </div>
           </div>
         }     
       </header>

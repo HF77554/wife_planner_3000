@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 
-const delegatedRoom = new mongoose.Schema({
+const room = new mongoose.Schema({
     adminID: {
+        type: String,
+        required: true
+    },
+    otherUserID: {
         type: String,
         required: true
     },
@@ -15,4 +19,4 @@ const delegatedRoom = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('delegatedRoom', delegatedRoom)
+module.exports = mongoose.model('room', room)
