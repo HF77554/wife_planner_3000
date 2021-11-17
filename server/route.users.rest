@@ -1,6 +1,6 @@
 
 GET http://localhost:4000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxNDg4OTN9.Hm93O5xb2ApGukcK5hOAJA9PhfmLZbBznm1WIkju-lk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxNzc5MDB9.IpxgZXVGElX7ZyZFe1zIsPRy8ZVJ8ksOTDiAB0etWWs
 
 ### 
 POST http://localhost:4000/register
@@ -12,6 +12,15 @@ Content-Type: application/json
     "userpassword": "admin"
 }
 
+### 
+PATCH http://localhost:4000/users/61942406bd003bd36498b724
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxNzc5MDB9.IpxgZXVGElX7ZyZFe1zIsPRy8ZVJ8ksOTDiAB0etWWs
+Content-Type: application/json
+
+{
+    "delegatedRoomID": ["61955a66c0ccf43be0e9cdd2","61955c3ac0ccf43be0e9cdd9"]
+}
+
 ###
 DELETE http://localhost:4000/users/618ea9692a1875d70f30fe69
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxNDg4OTN9.Hm93O5xb2ApGukcK5hOAJA9PhfmLZbBznm1WIkju-lk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxNzc5MDB9.IpxgZXVGElX7ZyZFe1zIsPRy8ZVJ8ksOTDiAB0etWWs

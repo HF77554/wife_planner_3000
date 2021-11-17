@@ -14,6 +14,32 @@ router.get('/', authenticateToken, async (req, res) =>{
     }
 })
 
+//Updating User
+router.patch('/:id',  authenticateToken, getUser, async (req, res) =>{
+    
+    //update username
+    if (req.body.username != null) {
+        res.user.username = req.body.username
+    }
+    //update userpassword
+    if (req.body.userpassword != null) {
+        res.user.userpassword = req.body.userpassword
+    }
+    //update delegatedRoomIDs
+    if (req.body.delegatedRoomID != null) {
+        res.user.delegatedRoomID = req.body.delegatedRoomID
+    }
+
+    //update User
+    try {
+        const updatedUser = await res.user.save()
+        res.json(updatedUser)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+
+})
+
 router.delete('/:id', authenticateToken, getUser, async (req, res) =>{
     try{
         await res.user.remove()
