@@ -1,15 +1,16 @@
-import React, {useState} from 'react'
-import {Container, Row, Col} from 'react-bootstrap'
+import React, { useState, useEffect} from 'react'
+import {Container, Row, Col, ListGroup} from 'react-bootstrap'
 
 import RoomCreation from './RoomCreation'
+import Rooms from './Rooms'
 
-function RoomSelection() {
+function RoomSelection({onUser}) {
     return (
         <Container className='m-4'>
             <Row>
                 <Col>
                     <h3>Select room from list:</h3>
-                    List of elements
+                    {onUser && <Rooms roomsID={onUser.delegatedRoomID} />}
                 </Col>
                 <Col>
                     <RoomCreation />
@@ -20,3 +21,5 @@ function RoomSelection() {
 }
 
 export default RoomSelection
+
+//<lu>{onUser.delegatedRoomID.map(rID => <li>{rID}</li>)}</lu>

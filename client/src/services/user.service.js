@@ -13,6 +13,16 @@ const getUserInfo = async () => {
   }
 };
 
+const getRoomInfo = async (roomID) => {
+  try {
+    const res = await axios.get(DATABASE_URL + "room/" + {roomID}, { headers: {"Authorization" : authHeader()} })
+    const data = res.data[0]
+    return data
+  } catch (err) {
+    console.log({err:err})
+  }
+};
+
 export default {
   getUserInfo
 };
