@@ -13,6 +13,15 @@ router.get('/', authenticateToken, async (req, res) =>{
     }
 })
 
+//Get user based on ID
+router.get('/:id', authenticateToken, getRoom, async (req, res) =>{
+    try{
+        res.json(res.room)
+    } catch (err) {
+        res.status(500).json({message:err.message})
+    }
+})
+
 //Create a room
 router.post('/create', authenticateToken, async (req, res) =>{
     const room = new Room({

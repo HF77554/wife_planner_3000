@@ -10,7 +10,6 @@ function Planner({onVerifiedUser}) {
 
     useEffect(async () => {
         const user = await UserService.getUserInfo();
-        console.log(user)
         if (user) {
             userInfoTask(user)
         }

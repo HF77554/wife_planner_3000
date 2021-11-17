@@ -6,17 +6,28 @@ const DATABASE_URL = "http://localhost:4000/";
 const getUserInfo = async () => {
   try {
     const res = await axios.get(DATABASE_URL + "users", { headers: {"Authorization" : authHeader()} })
-    const data = res.data[0]
+    const data = res.data
     return data
   } catch (err) {
     console.log({err:err})
   }
 };
 
-const getRoomInfo = async (roomID) => {
+const getUserInfoByID = async (userID) => {
   try {
-    const res = await axios.get(DATABASE_URL + "room/" + {roomID}, { headers: {"Authorization" : authHeader()} })
-    const data = res.data[0]
+    const res = await axios.get(DATABASE_URL + "users/" + userID, { headers: {"Authorization" : authHeader()} })
+    const data = res.data
+    return data
+  } catch (err) {
+    console.log({err:err})
+  }
+};
+
+const getRoomInfoByID = async (roomID) => {
+  try {
+    const res = await axios.get(DATABASE_URL + "room/" + roomID, { headers: {"Authorization" : authHeader()} })
+    const data = res.data
+    console.log(data)
     return data
   } catch (err) {
     console.log({err:err})
@@ -24,5 +35,7 @@ const getRoomInfo = async (roomID) => {
 };
 
 export default {
-  getUserInfo
+  getUserInfo,
+  getRoomInfoByID,
+  getUserInfoByID
 };

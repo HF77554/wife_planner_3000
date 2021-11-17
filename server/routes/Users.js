@@ -4,11 +4,21 @@ const User = require('../models/user')
 const encryption = require('../encryption')
 const authenticateToken = require('../authenticateToken')
 
+//get user making requests
 router.get('/', authenticateToken, async (req, res) =>{
     try{
         const users = await User.find()
-        //res.json(users)
-        res.json(users.filter(u => u.username === req.user.name))
+        res.json(users)
+        //res.json(users.filter(u => u.username === req.user.name)[0])
+    } catch (err) {
+        res.status(500).json({message:err.message})
+    }
+})
+
+//Get user based on ID
+router.get('/:id', authenticateToken, getUser, async (req, res) =>{
+    try{
+        res.json(res.user)
     } catch (err) {
         res.status(500).json({message:err.message})
     }

@@ -9,7 +9,6 @@ const Profile = () => {
     const user = await UserService.getUserInfo();
     if (user) {
       userInfoTask(user)
-      console.log(userInfo)
     }
   }, []);
 
