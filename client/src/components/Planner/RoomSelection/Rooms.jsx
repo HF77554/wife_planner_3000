@@ -1,7 +1,7 @@
 import React from 'react'
 import Room from './Room'
 
-function Rooms({ roomsID }) {
+function Rooms({ roomsID, onRoomSelection}) {
     
     return (
         <div>
@@ -9,6 +9,7 @@ function Rooms({ roomsID }) {
                 <Room
                 key={rID}
                 roomID={rID}
+                onRoomSelection={onRoomSelection}
                 />
             ))}
         </div>

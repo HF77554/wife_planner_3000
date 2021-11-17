@@ -3,13 +3,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iL
 
 ### 
 POST http://localhost:4000/room/create
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxODk2MzV9.c5eRuno8Pfk-cNl1H2yevEvkcjwt7Fr4xKRGJctne5k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxOTAzMzF9.HdExtsz3mwywZYBA_vJfln1JUBUtjaeFNW3Hd7W0pQg
 Content-Type: application/json
 
 {
-    "adminID": "619587f741cfde00193d565f",
-    "otherUserID": "6195886a41cfde00193d5663",
-    "delegatedTasks": ["admin item 1", "admin item 2", "admin item 3"]
+    "adminID": "6195898fc0c8b73e436c0f5f",
+    "otherUserID": "61958f77c68fa38feb031807",
+    "delegatedTasks": ["admin item 7", "admin item 8", "admin item 9"]
 }
 
 ### 

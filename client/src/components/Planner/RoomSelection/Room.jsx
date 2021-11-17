@@ -1,22 +1,27 @@
 import React, {useState, useEffect} from 'react'
 import UserService from "../../../services/user.service";
 
-function Room({roomID}) {
-  const [employeeInfo, employeeInfoTask] = useState()
+function Room({roomID, onRoomSelection}) {
+  const [employee, employeeTask] = useState()
 
   useEffect(async () => { 
     const room = await UserService.getRoomInfoByID(roomID);
-    console.log(room)
-    const roomHusband = await UserService.getUserInfoByID(room.otherUserID);
-    if (roomHusband) {
-      employeeInfoTask(room)
+    const employee = await UserService.getUserInfoByID(room.otherUserID);
+    if (employee) {
+      employeeTask(employee)
     }
-  }, [employeeInfo]);
+  }, []);
+
+  const buttonHandler = () => {
+    onRoomSelection(roomID)
+  }
 
   return (
       <div>
-          {roomID && <h5>{roomID}</h5>}
-          {employeeInfo && <h4>{employeeInfo.username}</h4>}
+          {employee && <h4>{employee.username}</h4>}
+          <button onClick={buttonHandler}>
+            onRoomSelection
+          </button>
       </div>
   )
 }

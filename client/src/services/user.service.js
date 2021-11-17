@@ -27,7 +27,6 @@ const getRoomInfoByID = async (roomID) => {
   try {
     const res = await axios.get(DATABASE_URL + "room/" + roomID, { headers: {"Authorization" : authHeader()} })
     const data = res.data
-    console.log(data)
     return data
   } catch (err) {
     console.log({err:err})

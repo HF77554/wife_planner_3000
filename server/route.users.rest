@@ -1,6 +1,6 @@
 
 GET http://localhost:4000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxODk2MzV9.c5eRuno8Pfk-cNl1H2yevEvkcjwt7Fr4xKRGJctne5k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3MTkxNzY3fQ.9wtfiFRr_8nf2smYz4R9fdveZgNKhSjz6xhZkZBxIdc
 
 ###
 GET http://localhost:4000/users/61942406bd003bd36498b724
@@ -10,20 +10,20 @@ POST http://localhost:4000/register
 Content-Type: application/json
 
 {
-    "username": "admin2",
-    "email":"admin2@gmail.com",
-    "userpassword": "admin2"
+    "username": "admin3",
+    "email":"admin3@gmail.com",
+    "userpassword": "admin3"
 }
 
 ### 
-PATCH http://localhost:4000/users/6195886a41cfde00193d5663
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxODk2MzV9.c5eRuno8Pfk-cNl1H2yevEvkcjwt7Fr4xKRGJctne5k
+PATCH http://localhost:4000/users/6195898fc0c8b73e436c0f5f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4zIiwiaWF0IjoxNjM3MTkxNTU4fQ.ppj3c3haV8jnW_Svrof90HIiLfvzHzo5zMNqmL65sp4
 Content-Type: application/json
 
 {
-    "delegatedRoomID": ["6195887641cfde00193d5665"]
+    "delegatedRoomID": ["61958fcfc68fa38feb03180b","61958bdc647fc8d92f0c44a2"]
 }
 
 ###
-DELETE http://localhost:4000/users/619586803a033acf1ee3ba13
+DELETE http://localhost:4000/users/619587f741cfde00193d565f
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxODk2MzV9.c5eRuno8Pfk-cNl1H2yevEvkcjwt7Fr4xKRGJctne5k

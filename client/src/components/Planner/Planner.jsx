@@ -13,15 +13,22 @@ function Planner({onVerifiedUser}) {
         if (user) {
             userInfoTask(user)
         }
-      }, []);
+    }, []);
+
+    const roomSelectionHandler = async(roomID) => {
+        const room = await UserService.getRoomInfoByID(roomID);
+        if(room){
+            roomSelectedTask(room)
+        }
+    }
 
     return (
         <div className="jumbotron">
             <h2>Planner</h2>
             {roomSelected && onVerifiedUser ?
-                "RoomDisplay"
+                <h1>{roomSelected.adminID}</h1>
             :
-                <RoomSelection onUser={userInfo}/>
+                <RoomSelection onUser={userInfo} onRoomSelection={roomSelectionHandler}/>
             }
         </div>
     )
