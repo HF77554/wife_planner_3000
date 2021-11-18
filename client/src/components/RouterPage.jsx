@@ -42,15 +42,19 @@ const RouterPage = () => {
 
     return (
         <div>
-            <NavBar fixed="top" onVerifiedUser={userVerification} onLogOut={() => logOut()}/>
-            <div className="container mt-3">
-                <Route exact path={["/", "/home"]} component={Home} />
-                <Route exact path="/login" component={() => (<Login onLogin={() => LogIn()} />)}/>
-                <Route exact path="/profile" component={Profile}/>
-                <Route exact path="/planner" component={() => (<Planner onVerifiedUser={userVerification} />)}/>
-                <Route exact path="/contactUs" component={ContactUs} />
-                <Route exact path="/signup" component={SignUp} />
-            </div>
+            {userVerification && 
+                <div>
+                    <NavBar fixed="top" onVerifiedUser={userVerification} onLogOut={() => logOut()}/>
+                    <div className="container mt-3">
+                        <Route exact path={["/", "/home"]} component={Home} />
+                        <Route exact path="/login" component={() => (<Login onLogin={() => LogIn()} />)}/>
+                        <Route exact path="/profile" component={Profile}/>
+                        <Route exact path="/planner" component={() => (<Planner onVerifiedUser={userVerification} />)}/>
+                        <Route exact path="/contactUs" component={ContactUs} />
+                        <Route exact path="/signup" component={SignUp} />
+                    </div>
+                </div>
+            }
         </div>
     )
 }

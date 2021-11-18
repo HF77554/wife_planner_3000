@@ -2,18 +2,18 @@ import React from 'react'
 import Room from './Room'
 import {Container, Col, ListGroup} from 'react-bootstrap'
 
-function Rooms({ roomsID, onRoomSelection}) {
+function Rooms({ rooms, onRoomSelection}) {
     
     return (
         <Container>
             <h3>Select room from list:</h3>
             <Col xs={5}>
                 <ListGroup>
-                    {roomsID && roomsID.map((rID) => (
+                    {rooms && rooms.map((room) => (
                         <Room
-                        key={rID}
-                        roomID={rID}
-                        onRoomSelection={onRoomSelection}
+                            key={room._id}
+                            room={room}
+                            onRoomSelection={onRoomSelection}
                         />
                     ))}
                 </ListGroup>

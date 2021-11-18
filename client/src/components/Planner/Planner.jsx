@@ -31,7 +31,9 @@ function Planner({onVerifiedUser}) {
                     <h5>{roomSelected.otherUserID}</h5>
                 </div>
             :
-                <RoomSelection onUser={userInfo} onRoomSelection={roomSelectionHandler}/>
+                <div>
+                    {userInfo && <RoomSelection onUser={userInfo} onRoomSelection={roomSelectionHandler}/>}
+                </div>
             }
         </div>
     )

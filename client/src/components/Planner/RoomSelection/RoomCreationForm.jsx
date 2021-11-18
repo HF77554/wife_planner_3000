@@ -7,7 +7,7 @@ function RoomCreationForm() {
     const onSubmit = (e) => {
         e.preventDefault();
         if (!email) {
-        alert("Missing a value in form, please fill all elements in form");
+            alert("Missing a value in form, please fill all elements in form");
         return;
         }
         alert(email);
@@ -17,7 +17,7 @@ function RoomCreationForm() {
     return (
         <div>
             <Form onSubmit={onSubmit}>
-                <Container className="login_form_input mb-3" onSubmit={onSubmit}>
+                <Container className="login_form_input mb-3">
                     <Form.Label>Username</Form.Label>
                     <Row>
                         <Col>
