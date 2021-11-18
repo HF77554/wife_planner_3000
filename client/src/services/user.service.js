@@ -33,8 +33,10 @@ const getRoomInfoByID = async (roomID) => {
   }
 };
 
-export default {
+const exportedObject = {
   getUserInfo,
   getRoomInfoByID,
   getUserInfoByID
 };
+
+export default exportedObject;
