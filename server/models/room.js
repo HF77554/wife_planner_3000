@@ -9,6 +9,11 @@ const room = new mongoose.Schema({
         type: String,
         required: true
     },
+    otherUserAcceptance: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     delegatedTasks: {
         type: Array
     },

@@ -1,30 +1,40 @@
 import React, {useState} from 'react'
 import {Form, Button, Container, Row, Col} from 'react-bootstrap'
 
-function RoomCreationForm() {
-    const [email, emailTask] = useState()
+import UserService from "../../../services/user.service";
 
-    const onSubmit = (e) => {
+
+function RoomCreationForm({onUser}) {
+    const [email, emailTask] = useState('')
+
+    const onSubmit = async (e) => {
         e.preventDefault();
         if (!email) {
             alert("Missing a value in form, please fill all elements in form");
         return;
         }
-        alert(email);
-        emailTask('');
+
+        const otherUser = await UserService.getUserInfoByEmail(email);
+        try {
+            const adminID = onUser._id
+            const otherUserID = otherUser._id
+            UserService.createRoom(adminID, otherUserID).then(emailTask(''))
+        } catch (err) {
+            console.log({err:err})
+        }
     };
 
     return (
         <div>
             <Form onSubmit={onSubmit}>
-                <Container className="login_form_input mb-3">
+                <Container className="login_form_input m-3">
                     <Form.Label>Username</Form.Label>
                     <Row>
                         <Col>
                             <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => emailTask(e.target.value)} />
                         </Col>
                         <Col>
-                            <Button className="m-6 btn-lg" type="submit">
+                            <Button className="btn-lg" type="submit">
                                 Send Request!
                             </Button>
                         </Col>

@@ -13,7 +13,7 @@ router.get('/', authenticateToken, async (req, res) =>{
     }
 })
 
-//Get user based on ID
+//Get room based on ID
 router.get('/:id', authenticateToken, getRoom, async (req, res) =>{
     try{
         res.json(res.room)
@@ -26,8 +26,7 @@ router.get('/:id', authenticateToken, getRoom, async (req, res) =>{
 router.post('/create', authenticateToken, async (req, res) =>{
     const room = new Room({
         adminID: req.body.adminID,
-        otherUserID: req.body.otherUserID,
-        delegatedTasks: req.body.delegatedTasks
+        otherUserID: req.body.otherUserID
     })
     try {
         const newRoom = await room.save()

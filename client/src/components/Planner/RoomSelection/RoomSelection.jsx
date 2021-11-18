@@ -30,7 +30,7 @@ function RoomSelection({onUser , onRoomSelection}) {
                         <Rooms rooms={userRooms} onRoomSelection={onRoomSelection} />
                     </Col>
                     <Col>
-                        <RoomCreation />
+                        <RoomCreation onUser={onUser} rooms={userRooms} />
                     </Col>
                 </Row>
             }

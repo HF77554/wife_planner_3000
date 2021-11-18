@@ -4,16 +4,16 @@ import {Container, Col} from 'react-bootstrap'
 import RoomCreationForm from './RoomCreationForm'
 import RoomRequestAcceptance from './RoomRequestAcceptance'
 
-function RoomCreation() {
+function RoomCreation({onUser, rooms}) {
     return (
         <Container>
             <Col className='m-3'>
                 <h3>Create New Room</h3>
-                <RoomCreationForm />
+                <RoomCreationForm onUser={onUser}/>
             </Col>
             <Col className='m-3'>
                 <h3>Request Acceptance</h3>
-                <RoomRequestAcceptance />
+                <RoomRequestAcceptance rooms={rooms}/>
             </Col>
         </Container>
     )

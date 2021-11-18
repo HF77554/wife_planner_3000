@@ -23,6 +23,16 @@ const getUserInfoByID = async (userID) => {
   }
 };
 
+const getUserInfoByEmail = async (userEmail) => {
+  try {
+    const res = await axios.get(DATABASE_URL + "find/" + userEmail, { headers: {"Authorization" : authHeader()} })
+    const data = res.data
+    return data
+  } catch (err) {
+    console.log({err:err})
+  }
+};
+
 const getRoomInfoByID = async (roomID) => {
   try {
     const res = await axios.get(DATABASE_URL + "room/" + roomID, { headers: {"Authorization" : authHeader()} })
@@ -33,10 +43,24 @@ const getRoomInfoByID = async (roomID) => {
   }
 };
 
+const createRoom = async (adminID, otherUserID) => {
+  return axios
+    .post(DATABASE_URL + "room/create", {
+        headers: {"Authorization" : authHeader()},
+        body:{"Content-Type": {adminID, otherUserID}
+      }
+    })
+    .then((res) => {
+      console.log(res);
+    });
+};
+
 const exportedObject = {
   getUserInfo,
   getRoomInfoByID,
-  getUserInfoByID
+  getUserInfoByID,
+  getUserInfoByEmail,
+  createRoom
 };
 
 export default exportedObject;
