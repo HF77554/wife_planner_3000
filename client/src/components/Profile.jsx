@@ -5,11 +5,15 @@ import UserService from "../services/user.service";
 const Profile = () => {
   const [userInfo, userInfoTask] = useState();
 
-  useEffect(async () => {
-    const user = await UserService.getUserInfo();
-    if (user) {
-      userInfoTask(user)
+  useEffect(() => {
+    const getUser = async () =>{
+      const user = await UserService.getUserInfo();
+      if (user) {
+        userInfoTask(user)
+      }
     }
+    
+    getUser()
   }, []);
 
   const dateConverter = (date) => {

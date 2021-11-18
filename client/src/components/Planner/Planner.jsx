@@ -7,26 +7,29 @@ function Planner({onVerifiedUser}) {
     const [userInfo, userInfoTask] = useState()
     const [roomSelected, roomSelectedTask] = useState()
     
-
-    useEffect(async () => {
-        const user = await UserService.getUserInfo();
-        if (user) {
-            userInfoTask(user)
-        }
+    useEffect(() => {
+        const getUser = async () => {
+            const user = await UserService.getUserInfo();
+            if (user) {
+                userInfoTask(user)
+            }
+        } 
+        
+        getUser()
     }, []);
 
-    const roomSelectionHandler = async(roomID) => {
-        const room = await UserService.getRoomInfoByID(roomID);
-        if(room){
-            roomSelectedTask(room)
-        }
+    const roomSelectionHandler = (roomInfo) => {
+        roomSelectedTask(roomInfo)
     }
 
     return (
         <div className="jumbotron">
             <h2>Planner</h2>
             {roomSelected && onVerifiedUser ?
-                <h1>{roomSelected.adminID}</h1>
+                <div>
+                    <button onClick={() => roomSelectedTask()}>Return to Room Selection</button>
+                    <h5>{roomSelected.otherUserID}</h5>
+                </div>
             :
                 <RoomSelection onUser={userInfo} onRoomSelection={roomSelectionHandler}/>
             }

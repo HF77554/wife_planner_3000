@@ -25,7 +25,7 @@ const RouterPage = () => {
         } else {
             userVerificationTask(false)
         }
-    });
+    }, []);
 
     const LogIn = () => {
         const verifiedUser = AuthService.getCurrentUser();
