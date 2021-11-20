@@ -4,7 +4,7 @@ import {Form, Button, Container, Row, Col} from 'react-bootstrap'
 import UserService from "../../../services/user.service";
 
 
-function RoomCreationForm({onUser}) {
+function RoomCreationForm({onUser, onChangesMade}) {
     const [email, emailTask] = useState('')
 
     const onSubmit = async (e) => {
@@ -18,7 +18,9 @@ function RoomCreationForm({onUser}) {
         try {
             const adminID = onUser._id
             const otherUserID = otherUser._id
-            UserService.createRoom(adminID, otherUserID).then(emailTask(''))
+            await UserService.createRoom(adminID, otherUserID)
+            emailTask('')
+            onChangesMade()
         } catch (err) {
             console.log({err:err})
         }
