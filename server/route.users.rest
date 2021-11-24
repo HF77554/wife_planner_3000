@@ -25,5 +25,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:4000/users/619587f741cfde00193d565f
+DELETE http://localhost:4000/users/61958f77c68fa38feb031807
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxODk2MzV9.c5eRuno8Pfk-cNl1H2yevEvkcjwt7Fr4xKRGJctne5k
