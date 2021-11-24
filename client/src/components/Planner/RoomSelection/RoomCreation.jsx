@@ -5,6 +5,7 @@ import RoomCreationForm from './RoomCreationForm'
 import RoomRequestAcceptance from './RoomRequestAcceptance'
 
 function RoomCreation({onUser, rooms, onChangesMade}) {
+    
     return (
         <Container>
             <Col className='m-3'>

@@ -78,7 +78,6 @@ const updateRoomsInUserByID = async (userID, RoomID) => {
 const UserRemoveRoomByID = async (userID, RoomID) => {
   try {
     const user = await getUserInfoByID(userID)
-    console.log(user.delegatedRoomID)
     const delegatedRoomID = user.delegatedRoomID.filter(rID => rID !== RoomID)
     const res = await axios.patch(DATABASE_URL + "users/" + userID, {delegatedRoomID},
     {

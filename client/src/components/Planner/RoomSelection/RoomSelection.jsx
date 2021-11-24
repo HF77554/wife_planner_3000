@@ -28,7 +28,7 @@ function RoomSelection({onUser , onRoomSelection, onChangesMade}) {
             {userRooms &&
                 <Row>
                     <Col>
-                        <Rooms rooms={userRooms} onRoomSelection={onRoomSelection} />
+                        <Rooms rooms={userRooms} onRoomSelection={onRoomSelection} onChangesMade={onChangesMade}/>
                     </Col>
                     <Col>
                         <RoomCreation onUser={onUser} rooms={userRooms} onChangesMade={onChangesMade}/>

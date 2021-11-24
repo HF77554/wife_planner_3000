@@ -3,7 +3,7 @@ import {ListGroup, Button, Container, Row, Col} from 'react-bootstrap'
 import UserService from "../../../services/user.service";
 import RoomService from "../../../services/room.service";
 
-function Room({room, onRoomSelection}) {
+function Room({room, onRoomSelection, onChangesMade}) {
   const [employee, employeeTask] = useState()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Room({room, onRoomSelection}) {
     try {
       await UserService.UserRemoveRoomByID(r.adminID, r._id)
       await UserService.UserRemoveRoomByID(r.otherUserID, r._id)
-      await RoomService.deleteRoom(r._id)
+      await RoomService.deleteRoom(r._id).then(onChangesMade())
     } catch (err) {
       console.log({err:err.message})
     }

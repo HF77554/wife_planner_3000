@@ -16,11 +16,16 @@ function RoomCreationForm({onUser, onChangesMade}) {
         return;
         }
 
+        const onReset = () => {
+            emailTask('')
+            roomNameTask('')
+            errorMessageTask('')
+        }
+
         try {
             const otherUser = await UserService.getUserInfoByEmail(email);
             if (!otherUser) return errorMessageTask('Error: user email not found')
-            UserService.createRoom(onUser._id, otherUser._id, roomName).then(emailTask('')).then(errorMessageTask(''))
-            onChangesMade()
+            await UserService.createRoom(onUser._id, otherUser._id, roomName).then(onChangesMade).then(onReset())
         } catch (err) {
             const errorM = err.message
             errorMessageTask(errorM)
@@ -44,9 +49,6 @@ function RoomCreationForm({onUser, onChangesMade}) {
                     </Row>
                     {errorMessage && <h5>{errorMessage}</h5>}
                 </Container>
-                <Button variant="primary" size="lg" type="submit">
-                    Changes made
-                </Button>
             </Form>
         </div>
     )

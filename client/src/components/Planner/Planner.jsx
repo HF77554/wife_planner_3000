@@ -23,8 +23,7 @@ function Planner({onVerifiedUser}) {
         } 
         
         getUser()
-        console.log('Changes made')
-    }, [changesMade]);
+    }, [onVerifiedUser, changesMade]);
 
     //updates roomSelected prop with Object having the selected room information
     const roomSelectionHandler = (roomInfo) => {
