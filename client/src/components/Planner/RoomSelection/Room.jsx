@@ -32,18 +32,16 @@ function Room({room, onRoomSelection, onChangesMade}) {
 
 
   return (
-    <Container>
+    <ListGroup.Item className='text-center mt-1 h3' action>
       <Row>
-        <Col>
-          <ListGroup.Item className='text-center mt-1 h3' action onClick={roomSelectionHandler}>
-            {employee && <h4>{employee.username}-{room.roomName}</h4>}
-          </ListGroup.Item>
+        <Col sm={10} onClick={roomSelectionHandler}>
+          {employee && <h4>{employee.username} - {room.roomName}</h4>}
         </Col>
-        <Col>
-          <Button onClick={() => roomDeletionHandler(room)}>X</Button>
+        <Col sm={2}>
+          <div onClick={() => roomDeletionHandler(room)}>X</div>
         </Col>
       </Row>
-    </Container>
+    </ListGroup.Item>
   )
 }
 

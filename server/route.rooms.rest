@@ -2,7 +2,7 @@ GET http://localhost:4000/room
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
 
 ###
-DELETE http://localhost:4000/room/619e95898ae21172877d6634
+DELETE http://localhost:4000/room/619ea999da579a3d39167a67
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
 
 ### 
