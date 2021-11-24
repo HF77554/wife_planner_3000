@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
-import {Form, Button, Container, Row, Col} from 'react-bootstrap'
+import {Form, Button, Container, Row} from 'react-bootstrap'
 
 import UserService from "../../../services/user.service";
 
 
 function RoomCreationForm({onUser}) {
     const [email, emailTask] = useState('')
+    const [roomName, roomNameTask] = useState('')
+    const [errorMessage, errorMessageTask] = useState()
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -14,31 +16,32 @@ function RoomCreationForm({onUser}) {
         return;
         }
 
-        const otherUser = await UserService.getUserInfoByEmail(email);
         try {
-            const adminID = onUser._id
-            const otherUserID = otherUser._id
-            UserService.createRoom(adminID, otherUserID).then(emailTask(''))
+            const otherUser = await UserService.getUserInfoByEmail(email);
+            if (!otherUser) return errorMessageTask('Error: user email not found')
+            UserService.createRoom(onUser._id, otherUser._id).then(emailTask('')).then(errorMessageTask(''))
         } catch (err) {
-            console.log({err:err})
+            const errorM = err.message
+            errorMessageTask(errorM)
         }
     };
 
     return (
         <div>
-            <Form onSubmit={onSubmit}>
-                <Container className="login_form_input m-3">
-                    <Form.Label>Username</Form.Label>
-                    <Row>
-                        <Col>
-                            <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => emailTask(e.target.value)} />
-                        </Col>
-                        <Col>
-                            <Button className="btn-lg" type="submit">
-                                Send Request!
-                            </Button>
-                        </Col>
+            <Form className='text-center font-weight-bold' onSubmit={onSubmit}>
+                <Container className="login_form_input m-3 ">
+                    <Row className='mb-3 mt-3'>
+                        <Form.Control type="text" placeholder="Enter room name" value={roomName} onChange={(e) => roomNameTask(e.target.value)} />
                     </Row>
+                    <Row className='mb-3'>
+                        <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => emailTask(e.target.value)} />
+                    </Row>
+                    <Row className='d-grid gap-2 mb-3'>
+                        <Button variant="primary" size="lg" type="submit">
+                            Send Request!
+                        </Button>
+                    </Row>
+                    {errorMessage && <h5>{errorMessage}</h5>}
                 </Container>
             </Form>
         </div>

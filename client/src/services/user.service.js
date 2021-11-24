@@ -44,23 +44,40 @@ const getRoomInfoByID = async (roomID) => {
 };
 
 const createRoom = async (adminID, otherUserID) => {
-  return axios
-    .post(DATABASE_URL + "room/create", {
-        headers: {"Authorization" : authHeader()},
-        body:{"Content-Type": {adminID, otherUserID}
-      }
+  try {
+    const res = await axios.post(DATABASE_URL + "room/create", {adminID, otherUserID},
+    {
+        headers: {"Authorization" : authHeader(), "Content-Type": "application/json"}
     })
-    .then((res) => {
-      console.log(res);
-    });
+    const data = res.data
+    await addRoomIDtoUserByID(adminID, data._id)
+    await addRoomIDtoUserByID(otherUserID, data._id)
+    return data
+  } catch (err) {
+    console.log({err:err})
+  }
 };
+
+const addRoomIDtoUserByID = async (userID, delegatedRoomID) => {
+  try {
+    const res = await axios.patch(DATABASE_URL + "users/" + userID, {delegatedRoomID},
+    {
+        headers: {"Authorization" : authHeader(), "Content-Type": "application/json"}
+    })
+    const data = res.data
+    return data
+  } catch (err) {
+    console.log({err:err})
+  }
+}
 
 const exportedObject = {
   getUserInfo,
   getRoomInfoByID,
   getUserInfoByID,
   getUserInfoByEmail,
-  createRoom
+  createRoom,
+  addRoomIDtoUserByID
 };
 
 export default exportedObject;

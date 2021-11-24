@@ -7,7 +7,7 @@ import RoomCreation from './RoomCreation'
 import Rooms from './Rooms'
 
 function RoomSelection({onUser , onRoomSelection}) {
-    const [userRooms, userRoomsInfo] = useState()
+    const [userRooms, userRoomsInfo] = useState('')
 
     useEffect(() => {
         const getRoomsInfo = async (userRoomID) => {
