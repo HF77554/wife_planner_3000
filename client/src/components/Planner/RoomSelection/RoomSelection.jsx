@@ -18,9 +18,10 @@ function RoomSelection({onUser , onRoomSelection, onChangesMade}) {
         //get room Json info
         if (onUser) {
             getRoomsInfo(onUser.delegatedRoomID)
+            
         }
 
-      }, [onUser]);
+    }, [onUser]);
 
     return (
         <Container className='m-4'>

@@ -35,7 +35,8 @@ router.patch('/:id',  authenticateToken, getUser, async (req, res) =>{
     if (req.body.userpassword != null) {
         res.user.userpassword = req.body.userpassword
     }
-    //update delegatedRoomIDs
+
+    //update delegatedRoomIDs based on new ID
     if (req.body.delegatedRoomID != null) {
         res.user.delegatedRoomID = req.body.delegatedRoomID
     }

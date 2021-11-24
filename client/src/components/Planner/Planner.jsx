@@ -8,7 +8,7 @@ function Planner({onVerifiedUser}) {
     const [roomSelected, roomSelectedTask] = useState('')
     const [changesMade, changesMadeTask] = useState(false)
     
-    //if user has been verified(logged in) get user information to pass as prop
+    //if user has been verified(logged in) get user information to pass as prop, changes based on change Prop
     useEffect(() => {
         const getUser = async () => {
             if (!onVerifiedUser) return;
@@ -20,11 +20,11 @@ function Planner({onVerifiedUser}) {
             } catch (err) {
                 console.log({ err: err.message })
             }
-            changesMadeTask(false)
         } 
         
         getUser()
-    }, [onVerifiedUser, changesMade]);
+        console.log('Changes made')
+    }, [changesMade]);
 
     //updates roomSelected prop with Object having the selected room information
     const roomSelectionHandler = (roomInfo) => {
@@ -32,9 +32,9 @@ function Planner({onVerifiedUser}) {
     }
 
     //updates user based on PATCH changes
-    const userUpdatedHandler = (roomInfo) => {
+    /*const userUpdatedHandler = (roomInfo) => {
         roomSelectedTask(roomInfo)
-    }
+    }*/
 
     return (
         <div>
@@ -48,7 +48,7 @@ function Planner({onVerifiedUser}) {
                         </div>
                     :
                         <div>
-                            {userInfo && <RoomSelection onUser={userInfo} onRoomSelection={roomSelectionHandler} onChangesMade={() => changesMadeTask(true)}/>}
+                            {userInfo && <RoomSelection onUser={userInfo} onRoomSelection={roomSelectionHandler} onChangesMade={() => changesMadeTask(!changesMade)}/>}
                         </div>
                     }
                 </div>

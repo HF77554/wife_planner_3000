@@ -11,7 +11,7 @@ function RoomCreationForm({onUser, onChangesMade}) {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        if (!email) {
+        if (!email || !roomName) {
             alert("Missing a value in form, please fill all elements in form");
         return;
         }
@@ -19,7 +19,8 @@ function RoomCreationForm({onUser, onChangesMade}) {
         try {
             const otherUser = await UserService.getUserInfoByEmail(email);
             if (!otherUser) return errorMessageTask('Error: user email not found')
-            UserService.createRoom(onUser._id, otherUser._id).then(emailTask('')).then(errorMessageTask('')).then(onChangesMade())
+            UserService.createRoom(onUser._id, otherUser._id, roomName).then(emailTask('')).then(errorMessageTask(''))
+            onChangesMade()
         } catch (err) {
             const errorM = err.message
             errorMessageTask(errorM)
@@ -43,6 +44,9 @@ function RoomCreationForm({onUser, onChangesMade}) {
                     </Row>
                     {errorMessage && <h5>{errorMessage}</h5>}
                 </Container>
+                <Button variant="primary" size="lg" type="submit">
+                    Changes made
+                </Button>
             </Form>
         </div>
     )

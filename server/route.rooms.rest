@@ -1,6 +1,10 @@
 GET http://localhost:4000/room
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
 
+###
+DELETE http://localhost:4000/room/619e95898ae21172877d6634
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
+
 ### 
 POST http://localhost:4000/room/create
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
@@ -19,7 +23,3 @@ Content-Type: application/json
 {
     "delegatedTasks": "admin task 4"
 }
-
-###
-DELETE http://localhost:4000/room/61958fcfc68fa38feb03180b
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
