@@ -71,6 +71,10 @@ const addRoomIDtoUserByID = async (userID, delegatedRoomID) => {
   }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0a8a955c2f4fc28a0458d4f4968207a10f516ac3
 const exportedObject = {
   getUserInfo,
   getRoomInfoByID,

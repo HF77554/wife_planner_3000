@@ -6,8 +6,8 @@ import UserService from "../../../services/user.service";
 import RoomCreation from './RoomCreation'
 import Rooms from './Rooms'
 
-function RoomSelection({onUser , onRoomSelection}) {
-    const [userRooms, userRoomsInfo] = useState('')
+function RoomSelection({onUser , onRoomSelection, onChangesMade}) {
+    const [userRooms, userRoomsInfo] = useState()
 
     useEffect(() => {
         const getRoomsInfo = async (userRoomID) => {
@@ -30,7 +30,7 @@ function RoomSelection({onUser , onRoomSelection}) {
                         <Rooms rooms={userRooms} onRoomSelection={onRoomSelection} />
                     </Col>
                     <Col>
-                        <RoomCreation onUser={onUser} rooms={userRooms} />
+                        <RoomCreation onUser={onUser} rooms={userRooms} onChangesMade={onChangesMade}/>
                     </Col>
                 </Row>
             }

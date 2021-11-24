@@ -4,7 +4,7 @@ import {Form, Button, Container, Row} from 'react-bootstrap'
 import UserService from "../../../services/user.service";
 
 
-function RoomCreationForm({onUser}) {
+function RoomCreationForm({onUser, onChangesMade}) {
     const [email, emailTask] = useState('')
     const [roomName, roomNameTask] = useState('')
     const [errorMessage, errorMessageTask] = useState()
@@ -19,7 +19,7 @@ function RoomCreationForm({onUser}) {
         try {
             const otherUser = await UserService.getUserInfoByEmail(email);
             if (!otherUser) return errorMessageTask('Error: user email not found')
-            UserService.createRoom(onUser._id, otherUser._id).then(emailTask('')).then(errorMessageTask(''))
+            UserService.createRoom(onUser._id, otherUser._id).then(emailTask('')).then(errorMessageTask('')).then(onChangesMade())
         } catch (err) {
             const errorM = err.message
             errorMessageTask(errorM)

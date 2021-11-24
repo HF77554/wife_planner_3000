@@ -4,6 +4,9 @@ const User = require('../models/user')
 const encryption = require('../encryption')
 
 router.post('/register', async (req, res) =>{
+
+    //need to check they don't exist in database before continuing. must update
+    
     const user = new User({
         username: req.body.username,
         userpassword: await encryption(req.body.userpassword),
