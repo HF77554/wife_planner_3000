@@ -1,6 +1,6 @@
 
 GET http://localhost:4000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2Mzc0MDk0MjN9.MFA-QgKZdqT_urE8f0p_k3nSVhusamA5spemyWg69IM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
 
 ###
 GET http://localhost:4000/users/61942406bd003bd36498b724
@@ -16,14 +16,14 @@ Content-Type: application/json
 }
 
 ### 
-PATCH http://localhost:4000/users/618ea65c0da045c386122036
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2Mzc0MDk0MjN9.MFA-QgKZdqT_urE8f0p_k3nSVhusamA5spemyWg69IM
+PATCH http://localhost:4000/users/619e824b8102d5eaf92799cd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
 Content-Type: application/json
 
 {
-    "delegatedRoomID": ["6194f39c8e898e79d8ee1f26"]
+    "delegatedRoomID": []
 }
 
 ###
-DELETE http://localhost:4000/users/618ea65c0da045c386122036
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2Mzc0MDk0MjN9.MFA-QgKZdqT_urE8f0p_k3nSVhusamA5spemyWg69IM
+DELETE http://localhost:4000/users/619e82418102d5eaf92799cb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MzcxODk2MzV9.c5eRuno8Pfk-cNl1H2yevEvkcjwt7Fr4xKRGJctne5k

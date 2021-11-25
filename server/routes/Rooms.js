@@ -26,7 +26,8 @@ router.get('/:id', authenticateToken, getRoom, async (req, res) =>{
 router.post('/create', authenticateToken, async (req, res) =>{
     const room = new Room({
         adminID: req.body.adminID,
-        otherUserID: req.body.otherUserID
+        otherUserID: req.body.otherUserID,
+        roomName: req.body.roomName
     })
     try {
         //const rooms = await Room.find()

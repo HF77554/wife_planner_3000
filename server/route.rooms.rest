@@ -1,20 +1,18 @@
 GET http://localhost:4000/room
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2Mzc0MDk0NTJ9.MLJ80crvdbiHhItLuWvGruAef95R5rkuXdVyvuMNr3o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
 
 ###
-DELETE http://localhost:4000/room/6198f12c6704a638f6cbd264
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2Mzc0MDk0NTJ9.MLJ80crvdbiHhItLuWvGruAef95R5rkuXdVyvuMNr3o
-
+DELETE http://localhost:4000/room/619ea999da579a3d39167a67
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
 
 ### 
 POST http://localhost:4000/room/create
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2Mzc0MDk0NTJ9.MLJ80crvdbiHhItLuWvGruAef95R5rkuXdVyvuMNr3o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4yIiwiaWF0IjoxNjM3NzY3ODAxfQ.lkt59TnUE_o9ltdD3t-2YMNEuIPh875UGtjmCWpcDRY
 Content-Type: application/json
 
 {
-    "adminID": "618ea65c0da045c386122036",
-    "otherUserID": "6198e269681bda67f29079ee",
-    "delegatedTasks": ["admin item 7", "admin item 8", "admin item 9"]
+    "adminID": "6195898fc0c8b73e436c0f5f",
+    "otherUserID": "61958f77c68fa38feb031807"
 }
 
 ### 
@@ -25,4 +23,3 @@ Content-Type: application/json
 {
     "delegatedTasks": "admin task 4"
 }
-

@@ -43,26 +43,45 @@ const getRoomInfoByID = async (roomID) => {
   }
 };
 
-const createRoom = async (adminID, otherUserID) => {
+const createRoom = async (adminID, otherUserID, roomName) => {
   try {
-    const res = await axios.post(DATABASE_URL + "room/create", {adminID, otherUserID},
+    const res = await axios.post(DATABASE_URL + "room/create", {adminID, otherUserID, roomName},
     {
         headers: {"Authorization" : authHeader(), "Content-Type": "application/json"}
     })
     const data = res.data
-    await addRoomIDtoUserByID(adminID, data._id)
-    await addRoomIDtoUserByID(otherUserID, data._id)
+    await updateRoomsInUserByID(adminID, data._id)
+    await updateRoomsInUserByID(otherUserID, data._id)
     return data
   } catch (err) {
     console.log({err:err})
   }
 };
 
-const addRoomIDtoUserByID = async (userID, delegatedRoomID) => {
+//updates room base on inputs
+const updateRoomsInUserByID = async (userID, RoomID) => {
   try {
+    const user = await getUserInfoByID(userID)
+    const delegatedRoomID = [...user.delegatedRoomID, RoomID]
     const res = await axios.patch(DATABASE_URL + "users/" + userID, {delegatedRoomID},
     {
-        headers: {"Authorization" : authHeader(), "Content-Type": "application/json"}
+      headers: {"Authorization" : authHeader(), "Content-Type": "application/json"}
+    })
+    const data = res.data
+    return data
+  } catch (err) {
+    console.log({err:err})
+  }
+}
+
+//input room ID and it will be removed from delegatedRoomID Array
+const UserRemoveRoomByID = async (userID, RoomID) => {
+  try {
+    const user = await getUserInfoByID(userID)
+    const delegatedRoomID = user.delegatedRoomID.filter(rID => rID !== RoomID)
+    const res = await axios.patch(DATABASE_URL + "users/" + userID, {delegatedRoomID},
+    {
+      headers: {"Authorization" : authHeader(), "Content-Type": "application/json"}
     })
     const data = res.data
     return data
@@ -78,7 +97,8 @@ const exportedObject = {
   getUserInfoByID,
   getUserInfoByEmail,
   createRoom,
-  addRoomIDtoUserByID
+  updateRoomsInUserByID,
+  UserRemoveRoomByID
 };
 
 export default exportedObject;

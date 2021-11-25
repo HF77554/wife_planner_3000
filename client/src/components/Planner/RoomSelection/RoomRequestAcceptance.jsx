@@ -1,10 +1,14 @@
 import React from 'react'
+import {Container, ListGroup} from 'react-bootstrap'
+import RoomRequestForm from './RoomRequestForm'
 
-function RoomRequestAcceptance() {
+function RoomRequestAcceptance({rooms}) {
     return (
-        <div>
-            Room Request List
-        </div>
+        <Container>
+            <ListGroup>
+                    {rooms && rooms.map((room) => <RoomRequestForm key={room._id} room={room} />)}
+            </ListGroup>
+        </Container>
     )
 }
 

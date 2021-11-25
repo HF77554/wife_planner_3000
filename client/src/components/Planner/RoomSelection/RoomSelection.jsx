@@ -18,16 +18,17 @@ function RoomSelection({onUser , onRoomSelection, onChangesMade}) {
         //get room Json info
         if (onUser) {
             getRoomsInfo(onUser.delegatedRoomID)
+            
         }
 
-      }, [onUser]);
+    }, [onUser]);
 
     return (
         <Container className='m-4'>
             {userRooms &&
                 <Row>
                     <Col>
-                        <Rooms rooms={userRooms} onRoomSelection={onRoomSelection} />
+                        <Rooms rooms={userRooms} onRoomSelection={onRoomSelection} onChangesMade={onChangesMade}/>
                     </Col>
                     <Col>
                         <RoomCreation onUser={onUser} rooms={userRooms} onChangesMade={onChangesMade}/>
