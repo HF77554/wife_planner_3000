@@ -40,18 +40,29 @@ router.post('/create', authenticateToken, async (req, res) =>{
 })
 
 //Updating One room
-/*router.patch('/:id',  authenticateToken, getRoom, async (req, res) =>{
-    console.log(req.room.delegatedTasks)
-    if (req.body.delegatedTasks != null) {
-        const updatedTasks = res.room.delegatedTasks+[req.body.name]
-        res.room.delegatedTasks = updatedTasks
+router.patch('/:id',  authenticateToken, getRoom, async (req, res) =>{
+
+    //update roomName
+    if (req.body.roomName != null) {
+        res.user.roomName = req.body.roomName
     }
+    //update otherUserAcceptance
+    if (req.body.otherUserAcceptance != null) {
+        res.user.otherUserAcceptance = req.body.otherUserAcceptance
+    }
+
+    //update delegatedTasks
+    if (req.body.delegatedTasks != null) {
+        res.user.delegatedTasks = req.body.delegatedTasks
+    }
+    
     try {
         const updatedRoom = await res.room.save()
+        res.json(updatedRoom)
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
-})*/
+})
 
 //Delete One room
 router.delete('/:id', authenticateToken, getRoom, async (req, res) =>{
