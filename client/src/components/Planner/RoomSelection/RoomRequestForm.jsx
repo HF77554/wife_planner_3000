@@ -1,33 +1,68 @@
 import React, {useEffect, useState} from 'react'
 
-import {ListGroup, Row, Col} from 'react-bootstrap'
+import {ListGroup, Row, Col, Button} from 'react-bootstrap'
 
 import UserService from "../../../services/user.service";
 
-function RoomRequestForm({room}) {
-    const [employee, employeeTask] = useState()
+function RoomRequestForm({onUser, room}) {
+    const [roomNonAdminInfo, roomNonAdminInfoTask] = useState()
+    const [roomAdminInfo, roomAdminInfoTask] = useState()
+    const [userIsAdmin, userIsAdminTask] = useState(true)
+    const [formColor, formColorTask] = useState('bg-info text-white')
 
     useEffect(() => {
-        const getEmployeeInfo = async () => {
-        const employee = await UserService.getUserInfoByID(room.otherUserID);
-        if (employee) {
-            employeeTask(employee)
+        //accepts room info and gets both users information based on ID
+        const getNonAdminInfo = async () => {
+
+            const roomNonAdminInfo = await UserService.getUserInfoByID(room.otherUserID);
+            const roomAdminInfo = await UserService.getUserInfoByID(room.otherUserID);
+
+            if (roomNonAdminInfo && roomAdminInfo) {
+                roomNonAdminInfoTask(roomNonAdminInfo)
+                roomAdminInfoTask(roomAdminInfo)
+
+                //check if current user is Room admin or nonadmin
+                if (roomNonAdminInfo._id === onUser._id) {
+                    userIsAdminTask(false)
+                    formColorTask('.bg-warning text-dark')
+                } else {
+                    userIsAdminTask(true)
+                    formColorTask('bg-info text-white')
+                }
+            }
         }
-        }
-        getEmployeeInfo()
-    }, [room]);
+
+        getNonAdminInfo()
+    }, [room, onUser]);
+
+    const handleDeletion = () => {
+        console.log('Delete')
+    }
+
+    const handleAcceptance = () => {
+        console.log('Accepted')
+    }
 
     return (
         <div>
-            <ListGroup.Item className='text-center mt-1 h3' action>
+            <ListGroup.Item className={`text-center m-1 ${formColor}`}>
+                {roomNonAdminInfo &&
                 <Row>
-                    <Col sm={10}>
-                        {employee && <h4>{employee.username} wants to start a room!</h4>}
+                    <Col sm={9}>
+                        <h5>
+                            {userIsAdmin ? `waiting for ${roomNonAdminInfo.username}'s response`
+                            :
+                            `${roomAdminInfo.username} wants to create a room!`}
+                        </h5>
+                    </Col>
+                    <Col sm={1}>
+                        {!userIsAdmin ? <Button variant="outline-primary" size="sm" onClick={() => handleAcceptance()}>Y</Button> : ''}
                     </Col>
                     <Col sm={2}>
-                        <div>X</div>
+                        <Button variant="outline-danger" size="sm" onClick={() => handleDeletion()}>X</Button>
                     </Col>
                 </Row>
+                }
             </ListGroup.Item>
         </div>
     )

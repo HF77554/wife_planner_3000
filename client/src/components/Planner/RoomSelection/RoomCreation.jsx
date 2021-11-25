@@ -14,7 +14,7 @@ function RoomCreation({onUser, rooms, onChangesMade}) {
             </Col>
             <Col className='m-3'>
                 <h3>Request Acceptance</h3>
-                <RoomRequestAcceptance rooms={rooms}/>
+                <RoomRequestAcceptance onUser={onUser} rooms={rooms}/>
             </Col>
         </Container>
     )
