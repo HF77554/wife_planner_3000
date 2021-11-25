@@ -29,6 +29,8 @@ router.post('/create', authenticateToken, async (req, res) =>{
         otherUserID: req.body.otherUserID
     })
     try {
+        //const rooms = await Room.find()
+        //if (users.filter(u => u.username === req.user.name)[0])
         const newRoom = await room.save()
         res.status(201).json(newRoom)
     } catch (err) {

@@ -18,7 +18,8 @@ function RoomCreationForm({onUser, onChangesMade}) {
         try {
             const adminID = onUser._id
             const otherUserID = otherUser._id
-            await UserService.createRoom(adminID, otherUserID)
+            const services = await UserService.createRoom(adminID, otherUserID)
+            console.log(services)
             emailTask('')
             onChangesMade()
         } catch (err) {
