@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 import {ListGroup, Row, Col, Button} from 'react-bootstrap'
 
 import UserService from "../../../services/user.service";
+import RoomService from "../../../services/room.service";
 
 function RoomRequestForm({onUser, room}) {
     const [roomNonAdminInfo, roomNonAdminInfoTask] = useState()
@@ -35,12 +36,21 @@ function RoomRequestForm({onUser, room}) {
         getNonAdminInfo()
     }, [room, onUser]);
 
+    //removes room
     const handleDeletion = () => {
         console.log('Delete')
     }
 
-    const handleAcceptance = () => {
-        console.log('Accepted')
+    //changes otherUserAcceptance in database to true
+    const handleAcceptance = async (room) => {
+        const otherUserAcceptance = true
+        const roomObj = {...room, otherUserAcceptance }
+        try{
+            if (!roomObj) return
+            await RoomService.updateRoomsByID(roomObj)
+        } catch (err) {
+            console.log({err:err})
+        }
     }
 
     return (
@@ -56,7 +66,7 @@ function RoomRequestForm({onUser, room}) {
                         </h5>
                     </Col>
                     <Col sm={1}>
-                        {!userIsAdmin ? <Button variant="outline-primary" size="sm" onClick={() => handleAcceptance()}>Y</Button> : ''}
+                        {!userIsAdmin ? <Button variant="outline-primary" size="sm" onClick={() => handleAcceptance(room)}>Y</Button> : ''}
                     </Col>
                     <Col sm={2}>
                         <Button variant="outline-danger" size="sm" onClick={() => handleDeletion()}>X</Button>

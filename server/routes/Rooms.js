@@ -44,16 +44,16 @@ router.patch('/:id',  authenticateToken, getRoom, async (req, res) =>{
 
     //update roomName
     if (req.body.roomName != null) {
-        res.user.roomName = req.body.roomName
+        res.room.roomName = req.body.roomName
     }
     //update otherUserAcceptance
     if (req.body.otherUserAcceptance != null) {
-        res.user.otherUserAcceptance = req.body.otherUserAcceptance
+        res.room.otherUserAcceptance = req.body.otherUserAcceptance
     }
 
     //update delegatedTasks
     if (req.body.delegatedTasks != null) {
-        res.user.delegatedTasks = req.body.delegatedTasks
+        res.room.delegatedTasks = req.body.delegatedTasks
     }
     
     try {

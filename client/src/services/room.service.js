@@ -27,9 +27,26 @@ const deleteRoom = async (roomID) => {
     }
 };
 
+//updates room based on ID
+const updateRoomsByID = async (roomObj) => {
+    try{
+        console.log(roomObj)
+        const res = await axios.patch(DATABASE_URL + "room/" + roomObj._id, {roomObj},
+        {
+            headers: {"Authorization" : authHeader(), "Content-Type": "application/json"}
+        })
+        const data = res.data
+        console.log(data)
+        
+    } catch (err) {
+        console.log({err:err})
+    }
+}
+
     const exportedObject = {
         deleteRoom,
-        getAllRooms
+        getAllRooms,
+        updateRoomsByID
     };
   
 export default exportedObject;
