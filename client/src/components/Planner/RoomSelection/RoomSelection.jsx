@@ -6,9 +6,12 @@ import UserService from "../../../services/user.service";
 import RoomCreation from './RoomCreation'
 import Rooms from './Rooms'
 
-function RoomSelection({onUser , onRoomSelection, onChangesMade}) {
+function RoomSelection({onUser , onRoomSelection, userChangesMade}) {
     const [userRooms, userRoomsInfo] = useState()
+    const [roomChangesMade, roomChangesMadeTask] = useState(false)
+    
 
+    //room info loading, set up prop for reset on changes
     useEffect(() => {
         const getRoomsInfo = async (userRoomID) => {
             const roomsInfo = await Promise.all(userRoomID.map(rID => UserService.getRoomInfoByID(rID)))
@@ -21,17 +24,17 @@ function RoomSelection({onUser , onRoomSelection, onChangesMade}) {
             
         }
 
-    }, [onUser]);
+    }, [onUser,roomChangesMade]);
 
     return (
         <Container className='m-4'>
             {userRooms &&
                 <Row>
                     <Col>
-                        <Rooms rooms={userRooms} onRoomSelection={onRoomSelection} onChangesMade={onChangesMade}/>
+                        <Rooms rooms={userRooms} onRoomSelection={onRoomSelection} userChangesMade={userChangesMade}/>
                     </Col>
                     <Col>
-                        <RoomCreation onUser={onUser} rooms={userRooms} onChangesMade={onChangesMade}/>
+                        <RoomCreation onUser={onUser} rooms={userRooms} userChangesMade={userChangesMade} roomChangesMade={() => roomChangesMadeTask(!roomChangesMade)}/>
                     </Col>
                 </Row>
             }

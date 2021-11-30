@@ -6,7 +6,7 @@ import UserService from "../../services/user.service";
 function Planner({onVerifiedUser}) {
     const [userInfo, userInfoTask] = useState()
     const [roomSelected, roomSelectedTask] = useState('')
-    const [changesMade, changesMadeTask] = useState(false)
+    const [userChangesMade, userChangesMadeTask] = useState(false)
     
     //if user has been verified(logged in) get user information to pass as prop, changes based on change Prop
     useEffect(() => {
@@ -23,7 +23,7 @@ function Planner({onVerifiedUser}) {
         } 
         
         getUser()
-    }, [onVerifiedUser, changesMade]);
+    }, [onVerifiedUser, userChangesMade]);
 
     //updates roomSelected prop with Object having the selected room information
     const roomSelectionHandler = (roomInfo) => {
@@ -47,7 +47,7 @@ function Planner({onVerifiedUser}) {
                         </div>
                     :
                         <div>
-                            {userInfo && <RoomSelection onUser={userInfo} onRoomSelection={roomSelectionHandler} onChangesMade={() => changesMadeTask(!changesMade)}/>}
+                            {userInfo && <RoomSelection onUser={userInfo} onRoomSelection={roomSelectionHandler} userChangesMade={() => userChangesMadeTask(!userChangesMade)}/>}
                         </div>
                     }
                 </div>

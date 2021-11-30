@@ -2,7 +2,7 @@ import React from 'react'
 import Room from './Room'
 import {Container, Row, ListGroup} from 'react-bootstrap'
 
-function Rooms({ rooms, onRoomSelection, onChangesMade}) {
+function Rooms({ rooms, onRoomSelection, userChangesMade}) {
     
     return (
         <Container>
@@ -14,7 +14,7 @@ function Rooms({ rooms, onRoomSelection, onChangesMade}) {
                             key={room._id}
                             room={room}
                             onRoomSelection={onRoomSelection}
-                            onChangesMade={onChangesMade}
+                            userChangesMade={userChangesMade}
                         />
                     ))}
                 </ListGroup>
