@@ -13,7 +13,11 @@ function RoomCreationForm({onUser, userChangesMade}) {
         e.preventDefault();
         if (!email || !roomName) {
             alert("Missing a value in form, please fill all elements in form");
-        return;
+            return;
+        }
+
+        if (email === onUser.email) {
+            return errorMessageTask('Error: current user email, room requires distinct users')
         }
 
         const onReset = () => {
@@ -28,8 +32,14 @@ function RoomCreationForm({onUser, userChangesMade}) {
             //gives UI error message for not excisting email
             if (!otherUser) return errorMessageTask('Error: user email not found')
 
-            //creates room, activates prop for user change, resets local props
-            await UserService.createRoom(onUser._id, otherUser._id, roomName).then(userChangesMade).then(onReset())
+            //creates room
+            const newRoom = await UserService.createRoom(onUser._id, otherUser._id, roomName)
+
+            //resets and lets know of user changes
+            if(newRoom){
+                onReset()
+                userChangesMade()
+            }
         } catch (err) {
             const errorM = err.message
             errorMessageTask(errorM)

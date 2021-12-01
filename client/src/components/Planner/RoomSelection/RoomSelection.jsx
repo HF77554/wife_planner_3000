@@ -28,7 +28,7 @@ function RoomSelection({onUser , onRoomSelection, userChangesMade}) {
 
     return (
         <Container className='m-4'>
-            {userRooms &&
+            {roomsInfo &&
                 <Row>
                     <Col>
                         <Rooms rooms={roomsInfo} onRoomSelection={onRoomSelection} userChangesMade={userChangesMade}/>

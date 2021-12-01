@@ -49,8 +49,12 @@ function RoomRequestForm({onUser, room, roomChangesMade}) {
         const roomObj = {...room, otherUserAcceptance }
         try{
             if (!roomObj) return
-            //updates room info, then changes prop for reset of rooms
-            await RoomService.updateRoomsByID(roomObj).then(roomChangesMade())
+            //updates room info, returns updated info
+            const updatedRoom = await RoomService.updateRoomsByID(roomObj)
+            //once return signals for room updating
+            if (updatedRoom){
+                roomChangesMade()
+            }
         } catch (err) {
             console.log({err:err})
         }

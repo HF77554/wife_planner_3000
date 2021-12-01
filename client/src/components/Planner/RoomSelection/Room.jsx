@@ -25,11 +25,16 @@ function Room({room, onRoomSelection, userChangesMade}) {
   const roomDeletionHandler = async (r) => {
     try {
       //remove room from admin's Room List - for admin
-      await UserService.UserRemoveRoomByID(r.adminID, r._id)
+      const admin = await UserService.UserRemoveRoomByID(r.adminID, r._id)
       //remove room from other user's Room List - for admin
-      await UserService.UserRemoveRoomByID(r.otherUserID, r._id)
+      const nonAdmin = await UserService.UserRemoveRoomByID(r.otherUserID, r._id)
       //remove room from other Rooms List
-      await RoomService.deleteRoom(r._id).then(userChangesMade())
+      const roomMessage = await RoomService.deleteRoom(r._id)
+
+      if(admin && nonAdmin && roomMessage) {
+        userChangesMade()
+      }
+
     } catch (err) {
       console.log({err:err.message})
     }
@@ -41,7 +46,7 @@ function Room({room, onRoomSelection, userChangesMade}) {
       {!room.otherUserAcceptance ? "":
         <ListGroup.Item className='text-center m-1'>
           <Row>
-            <Col sm={9} onClick={roomSelectionHandler}>
+            <Col sm={9}>
               {otherUser && <h4>{otherUser.username} - {room.roomName}</h4>}
             </Col>
             <Col sm={1}>
