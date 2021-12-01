@@ -8,7 +8,7 @@ import AuthService from "../services/auth.service";
 //components
 import Home from "./Home";
 import Login from "./Login";
-import Profile from "./Profile";
+import Profile from "./Profile/Profile";
 import Planner from "./Planner/Planner";
 import ContactUs from "./ContactUs";
 import SignUp from "./SignUp";

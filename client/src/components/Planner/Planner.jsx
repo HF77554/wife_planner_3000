@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import RoomSelection from './RoomSelection/RoomSelection'
+import RoomDisplayHub from './RoomDisplay/RoomDisplayHub'
 
 import UserService from "../../services/user.service";
 
@@ -43,7 +44,7 @@ function Planner({onVerifiedUser}) {
                     {roomSelected ?
                         <div>
                             <button onClick={() => roomSelectedTask('')}>Return to Room Selection</button>
-                            <h5>{roomSelected.otherUserID}</h5>
+                            <RoomDisplayHub onUser={userInfo} room={roomSelected} />
                         </div>
                     :
                         <div>

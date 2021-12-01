@@ -19,7 +19,7 @@ const room = new mongoose.Schema({
         default: false
     },
     delegatedTasks: {
-        type: Array
+        type: Object
     },
     creationDate: {
         type: Date,
