@@ -5,7 +5,7 @@ import {ListGroup, Row, Col, Button} from 'react-bootstrap'
 import UserService from "../../../services/user.service";
 import RoomService from "../../../services/room.service";
 
-function RoomRequestForm({onUser, room, roomChangesMade}) {
+function RoomRequestForm({onUser, userChangesMade, room, roomChangesMade}) {
     const [roomNonAdminInfo, roomNonAdminInfoTask] = useState()
     const [roomAdminInfo, roomAdminInfoTask] = useState()
     const [userIsAdmin, userIsAdminTask] = useState(true)
@@ -13,7 +13,7 @@ function RoomRequestForm({onUser, room, roomChangesMade}) {
 
     useEffect(() => {
         //accepts room info and gets both users information based on ID
-        const getNonAdminInfo = async () => {
+        const getRoomInfo = async () => {
 
             const roomNonAdminInfo = await UserService.getUserInfoByID(room.otherUserID);
             const roomAdminInfo = await UserService.getUserInfoByID(room.adminID);
@@ -34,13 +34,27 @@ function RoomRequestForm({onUser, room, roomChangesMade}) {
         }
 
         if (room && onUser) {
-            getNonAdminInfo()
+            getRoomInfo()
         }
     }, [room, onUser]);
 
     //removes room
-    const handleDeletion = () => {
-        console.log('Delete')
+    const handleDeletion = async () => {        
+        try {
+            //remove room from admin's Room List - for admin
+            const admin = await UserService.UserRemoveRoomByID(room.adminID, room._id)
+            //remove room from other user's Room List - for admin
+            const nonAdmin = await UserService.UserRemoveRoomByID(room.otherUserID, room._id)
+            //remove room from other Rooms List
+            const roomMessage = await RoomService.deleteRoom(room._id)
+      
+            if(admin && nonAdmin && roomMessage) {
+                userChangesMade()
+            }
+      
+        } catch (err) {
+            console.log({err:err.message})
+        }
     }
 
     //changes otherUserAcceptance in database to true

@@ -2,11 +2,11 @@ import React from 'react'
 import {Container, ListGroup} from 'react-bootstrap'
 import RoomRequestForm from './RoomRequestForm'
 
-function RoomRequestAcceptance({onUser, rooms, roomChangesMade}) {
+function RoomRequestAcceptance({onUser, rooms, userChangesMade, roomChangesMade}) {
     return (
         <Container>
             <ListGroup>
-                    {rooms && rooms.map((room) => <RoomRequestForm key={room._id} room={room} onUser={onUser} roomChangesMade={roomChangesMade}/>)}
+                    {rooms && rooms.map((room) => <RoomRequestForm key={room._id} room={room} onUser={onUser} userChangesMade={userChangesMade} roomChangesMade={roomChangesMade}/>)}
             </ListGroup>
         </Container>
     )
