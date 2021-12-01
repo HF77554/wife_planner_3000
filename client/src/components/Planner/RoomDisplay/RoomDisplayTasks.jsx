@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 
+import Tasks from './Tasks'
+
 function RoomDisplayTasks() {
     const [tasks, tasksTask] = useState([
         {
@@ -24,12 +26,7 @@ function RoomDisplayTasks() {
 
     return (
         <div>
-            {tasks.map(task => {return(
-                <div>
-                    <h3>{task.listLocation}</h3>
-                    <h5>{task.description}</h5>
-                </div>
-            )})}
+            <Tasks tasks={tasks} />
         </div>
     )
 }
