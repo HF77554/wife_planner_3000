@@ -13,27 +13,29 @@ function Task({task}) {
     }
 
     return (
-        <Container>
-            <Row>
-                <Col> 
+        <Container className='m-2 bg-secondary'>
+            <Row className='align-items-center'>
+                <Col sm={1}> 
                     <Row>
-                        <ListGroup.Item action onClick={onClickHandler}>
+                        <ListGroup.Item variant="primary" className='text-center' action onClick={onClickHandler}>
                             Up
                         </ListGroup.Item>
                     </Row>
                     <Row>
-                        <ListGroup.Item action onClick={onClickHandler}>
+                        <ListGroup.Item variant="primary" className='text-center' action onClick={onClickHandler}>
                             Down
                         </ListGroup.Item>
                     </Row>
                 </Col>
-                <Col>
-                    <ListGroup.Item action onClick={onTaskClickHandler}>
+                <Col sm={10}>
+                    <ListGroup.Item variant="secondary" className='text-center' action onClick={onTaskClickHandler}>
                         <h5>{task.listLocation} - {task.description}</h5>
                     </ListGroup.Item>
                 </Col>
-                <Col>
-                    X
+                <Col className='text-center' sm={1}>
+                    <ListGroup.Item variant="danger" className='text-center' action onClick={onTaskClickHandler}>
+                        X
+                    </ListGroup.Item>
                 </Col>
             </Row>
         </Container>
