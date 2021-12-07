@@ -2,31 +2,41 @@ import React, {useState} from 'react'
 
 import Tasks from './Tasks'
 
-function RoomDisplayTasks() {
+function RoomDisplayTasks({userIsAdmin, onTaskChanges}) {
     const [tasks, tasksTask] = useState([
         {
-            listLocation: 1,
+            id: 1,
             description: 'Task 1',
+            isFinished: false,
             inProgress: false,
             Urgent:false,
         },
         {
-            listLocation: 2,
+            id: 2,
             description: 'Task 2',
+            isFinished: true,
             inProgress: false,
             Urgent:false,
         },
         {
-            listLocation: 3,
+            id: 3,
             description: 'Task 3',
-            inProgress: false,
+            isFinished: false,
+            inProgress: true,
             Urgent:false,
+        },
+        {
+            id: 4,
+            description: 'Task 4',
+            isFinished: false,
+            inProgress: true,
+            Urgent:true,
         }
     ])
 
     return (
         <div>
-            <Tasks tasks={tasks} />
+            <Tasks tasks={tasks} onTaskChanges={onTaskChanges}/>
         </div>
     )
 }

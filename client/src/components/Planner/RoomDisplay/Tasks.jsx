@@ -1,19 +1,34 @@
 import React from 'react'
 
-import {ListGroup} from 'react-bootstrap'
+import {Tabs, Tab} from 'react-bootstrap'
 
-import Task from './Task'
+import TaskInProgress from './TaskInProgress'
+import TaskFinished from './TaskFinished'
 
 
-function Tasks({tasks}) {
+function Tasks({tasks, onTaskChanges}) {
     return (
-        <ListGroup>
-            {tasks.map(task => 
-                <Task
-                    task={task}
-                />
-            )}
-        </ListGroup>
+        <div>
+            <Tabs defaultActiveKey="To-do List" className="mb-3 h2">
+                <Tab eventKey="Working List" title="Working List">
+                    {tasks.map(task => 
+                        <TaskInProgress 
+                            key={task.id}
+                            task={task}
+                            onTaskChanges={onTaskChanges}
+                        />
+                    )}
+                </Tab>
+                <Tab eventKey="Finished List" title="Finished List">
+                    {tasks.map(task => 
+                        <TaskFinished
+                            key={task.id}
+                            task={task}
+                        />
+                    )}
+                </Tab>
+            </Tabs>
+        </div>
     )
 }
 

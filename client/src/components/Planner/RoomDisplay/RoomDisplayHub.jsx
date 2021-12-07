@@ -4,7 +4,7 @@ import RoomDisplayTasks from './RoomDisplayTasks'
 
 function RoomDisplayHub({room, onUser}) {
     const [userIsAdmin, userIsAdminTask] = useState(false)
-    const [roomDisplay, roomDisplayTask] = useState(room)
+    const [delegatedTasks, roomDisplayTask] = useState(room.delegatedTasks)
 
     useEffect(() => {
         if(room.adminID === onUser._id) {
@@ -15,17 +15,19 @@ function RoomDisplayHub({room, onUser}) {
     }, [room,onUser]);
 
 
+    const taskChangesHandler = (tasks) =>{
+        console.log(tasks)
+    }
+
     const handleClick = () =>{
-        console.log(room)
-        console.log(onUser)
+        console.log(delegatedTasks)
     }
 
     return (
         <div>
             <button onClick={()=> handleClick()}>Button</button>
-            {userIsAdmin ? 'True': 'False'}
-            <h5>{roomDisplay.otherUserID}</h5>
-            <RoomDisplayTasks />
+            {userIsAdmin ? 'Admin': 'Not Admin'}
+            <RoomDisplayTasks userIsAdmin={userIsAdmin} onTaskChanges={taskChangesHandler}/>
         </div>
     )
 }

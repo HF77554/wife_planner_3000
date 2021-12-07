@@ -4,6 +4,8 @@ import RoomDisplayHub from './RoomDisplay/RoomDisplayHub'
 
 import UserService from "../../services/user.service";
 
+import {Button} from 'react-bootstrap'
+
 function Planner({onVerifiedUser}) {
     const [userInfo, userInfoTask] = useState()
     const [roomSelected, roomSelectedTask] = useState('')
@@ -43,7 +45,7 @@ function Planner({onVerifiedUser}) {
                     <h2>Planner</h2>
                     {roomSelected ?
                         <div>
-                            <button onClick={() => roomSelectedTask('')}>Return to Room Selection</button>
+                            <Button className='mb-3' onClick={() => roomSelectedTask('')}>Return to Room Selection</Button>
                             <RoomDisplayHub onUser={userInfo} room={roomSelected} />
                         </div>
                     :
