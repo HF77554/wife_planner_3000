@@ -1,21 +1,30 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 import {Tabs, Tab} from 'react-bootstrap'
 
 import TaskInProgress from './TaskInProgress'
 import TaskFinished from './TaskFinished'
+import TaskForm from './TaskForm'
 
 
-function Tasks({tasks, onTaskChanges}) {
+function Tasks({userIsAdmin, tasks, taskProgress, taskUrgency, taskFinished, taskDelete, taskMoveUp, taskMoveDown, onTaskCreation}) {
+
     return (
         <div>
-            <Tabs defaultActiveKey="To-do List" className="mb-3 h2">
-                <Tab eventKey="Working List" title="Working List">
+            <Tabs defaultActiveKey="Active List" className="mb-3 h2">
+                <Tab eventKey="Active List" title="Active List">
+                    {userIsAdmin && <TaskForm onTaskCreation={onTaskCreation}/>}
                     {tasks.map(task => 
                         <TaskInProgress 
                             key={task.id}
                             task={task}
-                            onTaskChanges={onTaskChanges}
+                            userIsAdmin={userIsAdmin}
+                            taskDelete={taskDelete}
+                            taskFinished={taskFinished}
+                            taskMoveUp={taskMoveUp}
+                            taskMoveDown={taskMoveDown}
+                            taskUrgency={taskUrgency}
+                            taskProgress={taskProgress}
                         />
                     )}
                 </Tab>
@@ -24,6 +33,9 @@ function Tasks({tasks, onTaskChanges}) {
                         <TaskFinished
                             key={task.id}
                             task={task}
+                            userIsAdmin={userIsAdmin}
+                            taskDelete={taskDelete}
+                            taskFinished={taskFinished}
                         />
                     )}
                 </Tab>

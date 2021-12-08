@@ -6,7 +6,7 @@ import { BsTrash } from 'react-icons/bs';
 
 import {Button, Container, Row, Col} from 'react-bootstrap'
 
-function TaskFinished({task}) {
+function TaskFinished({task, userIsAdmin, taskDelete, taskFinished}) {
     return (
         <div>
             {task.isFinished ?
@@ -15,16 +15,18 @@ function TaskFinished({task}) {
                         <Col className='text-center mt-2 mb-2' sm={10}>
                             <del><h4>{task.description}</h4></del>
                         </Col>
-                        <Col className='mt-2 mb-2' sm={1}>
-                            <Button variant="primary">
+                        <Col sm={1}>
+                            <Button className='mt-2 mb-2' variant="primary" onClick={() => taskFinished(task)}>
                                 <GoReply />
                             </Button>
                         </Col>
-                        <Col sm={1}>
-                            <Button className='mt-2 mb-2' variant="danger">
-                                <BsTrash />
-                            </Button>
-                        </Col>
+                        {userIsAdmin ?
+                            <Col sm={1}>
+                                <Button className='mt-2 mb-2' variant="danger" onClick={() => taskDelete(task)}>
+                                    <BsTrash />
+                                </Button>
+                            </Col>
+                        :''}
                     </Row>    
                 </Container>
             : ''}
