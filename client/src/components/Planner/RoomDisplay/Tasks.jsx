@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 
 import {Tabs, Tab} from 'react-bootstrap'
 
@@ -7,11 +7,20 @@ import TaskFinished from './TaskFinished'
 import TaskForm from './TaskForm'
 
 
-function Tasks({userIsAdmin, tasks, taskProgress, taskUrgency, taskFinished, taskDelete, taskMoveUp, taskMoveDown, onTaskCreation}) {
+const Tasks = ({userIsAdmin, 
+                tasks, 
+                taskProgress, 
+                taskUrgency, 
+                taskFinish, 
+                taskReturn,  
+                taskDelete, 
+                taskMoveUp, 
+                taskMoveDown, 
+                onTaskCreation}) => {
 
     return (
         <div>
-            <Tabs defaultActiveKey="Active List" className="mb-3 h2">
+            <Tabs defaultActiveKey="Active List" className="mb-3 h4">
                 <Tab eventKey="Active List" title="Active List">
                     {userIsAdmin && <TaskForm onTaskCreation={onTaskCreation}/>}
                     {tasks.map(task => 
@@ -20,7 +29,7 @@ function Tasks({userIsAdmin, tasks, taskProgress, taskUrgency, taskFinished, tas
                             task={task}
                             userIsAdmin={userIsAdmin}
                             taskDelete={taskDelete}
-                            taskFinished={taskFinished}
+                            taskFinish={taskFinish}
                             taskMoveUp={taskMoveUp}
                             taskMoveDown={taskMoveDown}
                             taskUrgency={taskUrgency}
@@ -35,7 +44,7 @@ function Tasks({userIsAdmin, tasks, taskProgress, taskUrgency, taskFinished, tas
                             task={task}
                             userIsAdmin={userIsAdmin}
                             taskDelete={taskDelete}
-                            taskFinished={taskFinished}
+                            taskReturn={taskReturn}
                         />
                     )}
                 </Tab>

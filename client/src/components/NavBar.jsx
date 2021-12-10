@@ -1,6 +1,6 @@
 import Button from '@restart/ui/esm/Button';
 import React from 'react'
-import {Navbar, Container, Nav, Col, Row} from 'react-bootstrap'
+import {Navbar, Container, Nav, Col} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 
 const NavBar = ({onVerifiedUser, onLogOut}) => {
@@ -9,34 +9,32 @@ const NavBar = ({onVerifiedUser, onLogOut}) => {
             <LinkContainer to="/Home">
                 <Navbar.Brand>LOGO</Navbar.Brand>
             </LinkContainer>                
-            <Container className="fluid m-1 h4">
+            <Container className="justify-content m-1 h4">
                 <Nav className="me-auto my-2 my-lg-0 text-light">
-                    <Row>
-                        <Col>
-                            <LinkContainer to="/Home">
-                                <Nav.Link>Home</Nav.Link>
-                            </LinkContainer>
-                        </Col>
-                        <Col>
-                            <LinkContainer to="/contactUs">
+                    <Col>
+                        <LinkContainer to="/Home">
+                            <Nav.Link>Home</Nav.Link>
+                        </LinkContainer>
+                    </Col>
+                    <Col>
+                        <LinkContainer to="/contactUs">
                             <Nav.Link>Contact</Nav.Link>
+                        </LinkContainer>
+                    </Col>
+                    {onVerifiedUser ?
+                        <Col>
+                            <LinkContainer to="/profile">
+                                <Nav.Link>Profile</Nav.Link>
                             </LinkContainer>
                         </Col>
-                        {onVerifiedUser ?
-                            <Col>
-                                <LinkContainer to="/profile">
-                                    <Nav.Link>Profile</Nav.Link>
-                                </LinkContainer>
-                            </Col>
-                        : ''}
-                        {onVerifiedUser ?
-                            <Col>
-                                <LinkContainer to="/planner">
-                                    <Nav.Link>Planner</Nav.Link>
-                                </LinkContainer>
-                            </Col>
-                        : ''}
-                    </Row>
+                    : ''}
+                    {onVerifiedUser ?
+                        <Col>
+                            <LinkContainer to="/planner">
+                                <Nav.Link>Planner</Nav.Link>
+                            </LinkContainer>
+                        </Col>
+                    : ''}  
                 </Nav>
                 <Nav>
                     <Col>

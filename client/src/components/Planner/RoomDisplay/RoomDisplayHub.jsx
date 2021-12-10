@@ -13,14 +13,8 @@ function RoomDisplayHub({room, onUser}) {
         }
     }, [room,onUser]);
 
-    const handleClick = () =>{
-        console.log(userIsAdmin)
-    }
-
     return (
         <div>
-            <button onClick={()=> handleClick()}>Button</button>
-            {userIsAdmin ? 'Admin': 'Not Admin'}
             <RoomDisplayTasks userIsAdmin={userIsAdmin} room={room}/>
         </div>
     )

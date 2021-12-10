@@ -12,6 +12,12 @@ const TaskForm = ({onTaskCreation}) => {
             alert('Must input task in order to submit')
             return
         }
+        
+        if ( task.split(' ').length <= 1 && task.length >= 30 ) {
+            alert('task must be sentence, please input correct task')
+            return
+        }
+        
         const newTask = {
             id: Date.now(),
             description: task,
@@ -24,7 +30,7 @@ const TaskForm = ({onTaskCreation}) => {
     }
 
     return (
-        <Form className='h3' onSubmit={onSubmit}>
+        <Form className='h5' onSubmit={onSubmit}>
             <Form.Group className="mb-3">
                     <Form.Label>Task to Create</Form.Label>
                     <Form.Control size="lg" type='text' value={task} placeholder="Enter task"  onChange={(e) => taskHandler(e.target.value)}/>
