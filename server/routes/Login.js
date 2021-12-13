@@ -9,7 +9,7 @@ router.post('/', getUserInfo, async (req, res) => {
     try {
         if(await bcrypt.compare(req.body.userpassword, res.user.userpassword)){
             const username = { name: res.user.username };
-            const accessToken = jwt.sign(username, process.env.ACCESS_TOKEN_SECRET)
+            const accessToken = jwt.sign(username, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10s' })
             res.json({accessToken:accessToken})
         } else {
             res.send('Not Allowed')

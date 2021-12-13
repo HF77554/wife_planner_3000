@@ -4,6 +4,7 @@ import {Navbar, Container, Nav, Col} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 
 const NavBar = ({onVerifiedUser, onLogOut}) => {
+
     return (
         <Navbar bg="dark" variant="dark">
             <LinkContainer to="/Home">

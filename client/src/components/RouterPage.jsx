@@ -13,20 +13,19 @@ import Planner from "./Planner/Planner";
 import ContactUs from "./ContactUs";
 import SignUp from "./SignUp";
 
+
 const RouterPage = () => {
     let history = useHistory();
     const [userVerification, userVerificationTask] = useState(false);
 
-    //checks on loading if Token still available and accessible
-    useEffect(() => {
 
+    //checks on loading if Token still available and accessible, needs work
+    /*useEffect(() => {
         const verifiedUser = AuthService.getCurrentUser();
-        if (verifiedUser) {
-            userVerificationTask(true);
-        } else {
-            userVerificationTask(false)
-        }
-    }, []);
+        if (verifiedUser) return;
+        userVerificationTask(false)
+        history.push("/home")
+    }, 5000);*/
 
     //on event checks for token and updates prop if available
     const LogIn = () => {
