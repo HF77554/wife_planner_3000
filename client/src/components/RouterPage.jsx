@@ -4,7 +4,6 @@ import NavBar from './NavBar'
 
 //Auth functions
 import AuthService from "../services/auth.service";
-import authHeader from "../services/auth-header";
 
 //components
 import Home from "./Home";
@@ -19,14 +18,6 @@ const RouterPage = () => {
     let history = useHistory();
     const [userVerification, userVerificationTask] = useState(false);
     
-    //checks on loading if Token still available and accessible, needs work
-    /*useEffect(() => {
-        /*const verifiedUser = AuthService.getCurrentUser();
-        if (verifiedUser) return;
-        userVerificationTask(false)
-        history.push("/home")
-    });*/
-
     //on event checks for token and updates prop if available
     const LogIn = () => {
         const verifiedUser = AuthService.getCurrentUser();
@@ -38,6 +29,8 @@ const RouterPage = () => {
     //removes Token from Local storage, resets prop, sends user to Home page
     const logOut = () => {
         AuthService.logout();
+        userVerificationTask(false)
+        history.push("/home")
     };
 
     return (
