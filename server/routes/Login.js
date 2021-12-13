@@ -9,7 +9,7 @@ router.post('/', getUserInfo, async (req, res) => {
     try {
         if(await bcrypt.compare(req.body.userpassword, res.user.userpassword)){
             const username = { name: res.user.username };
-            const accessToken = jwt.sign(username, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10s' })
+            const accessToken = generateAccessToken(username)
             res.json({accessToken:accessToken})
         } else {
             res.send('Not Allowed')
@@ -19,6 +19,10 @@ router.post('/', getUserInfo, async (req, res) => {
         res.status(500).json({message: err.message})
     }
 })
+
+function generateAccessToken(user) {
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
+}
 
 async function getUserInfo(req, res, next) {
     let user;

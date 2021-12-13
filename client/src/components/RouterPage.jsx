@@ -4,6 +4,7 @@ import NavBar from './NavBar'
 
 //Auth functions
 import AuthService from "../services/auth.service";
+import authHeader from "../services/auth-header";
 
 //components
 import Home from "./Home";
@@ -17,15 +18,14 @@ import SignUp from "./SignUp";
 const RouterPage = () => {
     let history = useHistory();
     const [userVerification, userVerificationTask] = useState(false);
-
-
+    
     //checks on loading if Token still available and accessible, needs work
     /*useEffect(() => {
-        const verifiedUser = AuthService.getCurrentUser();
+        /*const verifiedUser = AuthService.getCurrentUser();
         if (verifiedUser) return;
         userVerificationTask(false)
         history.push("/home")
-    }, 5000);*/
+    });*/
 
     //on event checks for token and updates prop if available
     const LogIn = () => {
@@ -38,13 +38,12 @@ const RouterPage = () => {
     //removes Token from Local storage, resets prop, sends user to Home page
     const logOut = () => {
         AuthService.logout();
-        userVerificationTask(false)
-        history.push("/home")
     };
 
     return (
         <div>
             <NavBar fixed="top" onVerifiedUser={userVerification} onLogOut={() => logOut()}/>
+            
             <div className="container mt-3">
                 <Route exact path={["/", "/home"]} component={Home} />
                 <Route exact path="/login" component={() => (<Login onLogin={() => LogIn()} />)}/>
