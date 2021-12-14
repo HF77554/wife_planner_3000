@@ -1,6 +1,5 @@
-import Button from '@restart/ui/esm/Button';
 import React from 'react'
-import {Navbar, Container, Nav, Col} from 'react-bootstrap'
+import {Navbar, Button, Nav, Col, Row} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 
 const NavBar = ({onVerifiedUser, onLogOut}) => {
@@ -10,8 +9,8 @@ const NavBar = ({onVerifiedUser, onLogOut}) => {
             <LinkContainer to="/Home">
                 <Navbar.Brand>LOGO</Navbar.Brand>
             </LinkContainer>                
-            <Container className="justify-content m-1 h4">
-                <Nav className="me-auto my-2 my-lg-0 text-light">
+            <Nav className="me-auto my-2 text-light">
+                <Row className='me-3 h4'>
                     <Col>
                         <LinkContainer to="/Home">
                             <Nav.Link>Home</Nav.Link>
@@ -22,40 +21,40 @@ const NavBar = ({onVerifiedUser, onLogOut}) => {
                             <Nav.Link>Contact</Nav.Link>
                         </LinkContainer>
                     </Col>
-                    {onVerifiedUser ?
-                        <Col>
-                            <LinkContainer to="/profile">
-                                <Nav.Link>Profile</Nav.Link>
-                            </LinkContainer>
-                        </Col>
-                    : ''}
-                    {onVerifiedUser ?
-                        <Col>
-                            <LinkContainer to="/planner">
-                                <Nav.Link>Planner</Nav.Link>
-                            </LinkContainer>
-                        </Col>
-                    : ''}  
-                </Nav>
-                <Nav>
+                </Row>
+                {onVerifiedUser ?
+                <Row className='me-3 h4'>
                     <Col>
-                        <LinkContainer to="/SignUp">
-                            <Nav.Link>SignUp</Nav.Link>
+                        <LinkContainer to="/profile">
+                            <Nav.Link>Profile</Nav.Link>
                         </LinkContainer>
                     </Col>
                     <Col>
-                        {onVerifiedUser ? 
-                            <Button className="m-1 bg-danger text-white" onClick={onLogOut}>
-                                LogOut
-                            </Button>
-                            :
-                            <LinkContainer to="/Login">
-                                <Nav.Link>Login</Nav.Link>
-                            </LinkContainer>
-                        }
+                        <LinkContainer to="/planner">
+                        <Nav.Link>Planner</Nav.Link>
+                        </LinkContainer>
                     </Col>
-                </Nav>
-            </Container>
+                </Row>
+                : ''} 
+            </Nav>
+            <Nav className="me-4 h4 text-light">
+                <Col>
+                    <LinkContainer to="/SignUp">
+                        <Nav.Link>SignUp</Nav.Link>
+                    </LinkContainer>
+                </Col>
+                <Col>
+                    {onVerifiedUser ? 
+                        <Button variant="danger" size="lg" onClick={onLogOut}>
+                            LogOut
+                        </Button>
+                        :
+                        <LinkContainer to="/Login">
+                            <Nav.Link>Login</Nav.Link>
+                        </LinkContainer>
+                    }
+                </Col>
+            </Nav>
         </Navbar>
     )
 }

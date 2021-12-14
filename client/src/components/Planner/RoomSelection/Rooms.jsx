@@ -5,20 +5,16 @@ import {Container, Row, ListGroup} from 'react-bootstrap'
 function Rooms({ rooms, onRoomSelection, userChangesMade}) {
     
     return (
-        <Container>
-            <h3>Select room from list:</h3>
-            <Row xs={8}>
-                <ListGroup>
-                    {rooms && rooms.map((room) => (
-                        <Room
-                            key={room._id}
-                            room={room}
-                            onRoomSelection={onRoomSelection}
-                            userChangesMade={userChangesMade}
-                        />
-                    ))}
-                </ListGroup>
-            </Row>
+        <Container className='m-1'>
+            <h3>Select Room From List:</h3>
+            {rooms && rooms.map((room) => (
+                <Room
+                    key={room._id}
+                    room={room}
+                    onRoomSelection={onRoomSelection}
+                    userChangesMade={userChangesMade}
+                />
+            ))}
         </Container>
     )
 }

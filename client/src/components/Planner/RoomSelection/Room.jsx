@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {ListGroup, Button, Row, Col} from 'react-bootstrap'
+import {ListGroup, Button, Row, Col, ButtonGroup, ToggleButton} from 'react-bootstrap'
 import UserService from "../../../services/user.service";
 import RoomService from "../../../services/room.service";
 
@@ -44,17 +44,24 @@ function Room({room, onRoomSelection, userChangesMade}) {
   return (
     <div>
       {!room.otherUserAcceptance ? "":
-        <ListGroup.Item className='text-center m-1'>
+        <ListGroup.Item className='m-3'>
           <Row>
-            <Col sm={9}>
+
+            <Col className='text-center h5 mt-3'>
               {otherUser && <h4>{otherUser.username} - {room.roomName}</h4>}
             </Col>
-            <Col sm={1}>
-              <Button variant="outline-primary" size="sm" onClick={roomSelectionHandler}>Y</Button>
+
+            <Col>
+              <ButtonGroup className="m-2">
+                <ToggleButton variant="outline-primary" size="lg" onClick={roomSelectionHandler}>
+                  Check Room
+                </ToggleButton>
+                <ToggleButton variant="outline-danger" size="lg" onClick={() => roomDeletionHandler(room)}>
+                  Delete
+                </ToggleButton>
+              </ButtonGroup>
             </Col>
-            <Col sm={2}>
-              <Button variant="outline-danger" size="sm" onClick={() => roomDeletionHandler(room)}>X</Button>
-            </Col>
+
           </Row>
         </ListGroup.Item>
       }

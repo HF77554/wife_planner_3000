@@ -77,23 +77,32 @@ function RoomRequestForm({onUser, userChangesMade, room, roomChangesMade}) {
     return (
         <div>
             {!room.otherUserAcceptance &&
-                <ListGroup.Item className={`text-center m-1 ${formColor}`}>
+                <ListGroup.Item className={`m-1 ${formColor}`}>
                     {roomNonAdminInfo &&
-                    <Row>
-                        <Col sm={9}>
-                            <h5>
+                        <Row>
+                            <Col className='text-center h5 m-2' xs={8}>
                                 {userIsAdmin ? `waiting for ${roomNonAdminInfo.username}'s response`
                                 :
-                                `${roomAdminInfo.username} wants to create a room!`}
-                            </h5>
-                        </Col>
-                        <Col sm={1}>
-                            {!userIsAdmin ? <Button variant="outline-primary" size="sm" onClick={() => handleAcceptance(room)}>Y</Button> : ''}
-                        </Col>
-                        <Col sm={2}>
-                            <Button variant="outline-danger" size="sm" onClick={() => handleDeletion()}>X</Button>
-                        </Col>
-                    </Row>
+                                `${roomAdminInfo.username} wants to create a room named "${room.roomName}"`}
+                            </Col>
+
+                            <Col>
+                                <Row>
+                                    <Col>
+                                        {!userIsAdmin ? 
+                                            <div className="d-grid gap-2">
+                                                <Button variant="primary" onClick={() => handleAcceptance(room)}>Accept</Button>
+                                            </div>
+                                        : ''}
+                                    </Col>
+                                    <Col>
+                                        <div className="d-grid gap-2">
+                                            <Button variant="danger" onClick={() => handleDeletion()}>Delete</Button>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
                     }
                 </ListGroup.Item>
             }

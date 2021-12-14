@@ -49,7 +49,7 @@ function RoomCreationForm({onUser, userChangesMade}) {
     return (
         <div>
             <Form className='text-center font-weight-bold' onSubmit={onSubmit}>
-                <Container className="login_form_input m-3 ">
+                <Container className="m-3">
                     <Row className='mb-3 mt-3'>
                         <Form.Control type="text" placeholder="Enter room name" value={roomName} onChange={(e) => roomNameTask(e.target.value)} />
                     </Row>
