@@ -1,6 +1,6 @@
 import React from 'react'
 import Room from './Room'
-import {Container, Row, ListGroup} from 'react-bootstrap'
+import {Container} from 'react-bootstrap'
 
 function Rooms({ rooms, onRoomSelection, userChangesMade}) {
     
