@@ -5,7 +5,7 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import App from "./App";
 
 ReactDOM.render(
-  <BrowserRouter basename="/React">
+  <BrowserRouter basename="/">
     <Switch>
       <App />
     </Switch>

@@ -11,7 +11,7 @@ function RoomDisplayTasks({userIsAdmin, room}) {
         
         const delegatedTaskUpdate = async(tasks) =>{
             const roomObj = {...room, delegatedTasks:tasks}
-            const res = await RoomService.updateRoomsByID(roomObj)
+            await RoomService.updateRoomsByID(roomObj)
         }
         
         try {

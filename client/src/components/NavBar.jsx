@@ -39,9 +39,12 @@ const NavBar = ({onVerifiedUser, onLogOut}) => {
             </Nav>
             <Nav className="me-4 h4 text-light">
                 <Col>
-                    <LinkContainer to="/SignUp">
-                        <Nav.Link>SignUp</Nav.Link>
-                    </LinkContainer>
+                    {onVerifiedUser ?
+                        '':
+                        <LinkContainer to="/SignUp">
+                            <Nav.Link>SignUp</Nav.Link>
+                        </LinkContainer>
+                    }
                 </Col>
                 <Col>
                     {onVerifiedUser ? 

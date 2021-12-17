@@ -26,10 +26,10 @@ bootstrap()
     //load build page from server
     app.use(express.static(path.join(__dirname, 'public')));
 
-    app.get('/*', function (req, res) {
+    /*app.get('/*', function (req, res) {
       console.log('page is being loaded')
       res.sendFile(path.join(__dirname, 'public', 'index.html'));
-    }).listen(3000);
+    }).listen(3000);*/
     
 
     //listen to port
