@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter , Switch } from "react-router-dom";
 
 import App from "./App";
 
 ReactDOM.render(
-  <BrowserRouter basename="/">
+  <BrowserRouter  basename="/">
     <Switch>
       <App />
     </Switch>
-  </BrowserRouter>,
+  </BrowserRouter >,
   document.getElementById("root")
 );

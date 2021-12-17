@@ -24,14 +24,14 @@ bootstrap()
     await routeSubscriber(app);
     
     //load build page from server
-    app.use(express.static(path.join(__dirname, 'public')));
-
-    /*app.get('/*', function (req, res) {
-      console.log('page is being loaded')
-      res.sendFile(path.join(__dirname, 'public', 'index.html'));
-    }).listen(3000);*/
+    app.use(express.static(path.join(__dirname, 'build')));
     
-
+    app.get('/*', function (req, res) {
+      console.log('page is being loaded')
+      res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    });
+    
+    console.log('listen')
     //listen to port
     app.listen(port, () => {
       console.log(`Server is running in port ${port}`)
