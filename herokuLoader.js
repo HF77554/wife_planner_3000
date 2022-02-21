@@ -4,6 +4,7 @@ const bootstrap = require('./server/bootstrap');
 const routeSubscriber = require('./server/routes')
 const helmet = require('helmet');
 const cors = require("cors");
+const path = require('path')
 
 bootstrap()
   .then(async () => {
@@ -29,7 +30,7 @@ bootstrap()
 
     //runs webpage
     if (process.env.NODE_ENV === 'production') {
-      app.use(express.static('client/build'));
+      app.use('/static', express.static(path.join(__dirname, 'client/build')));
     }
   })
   .catch(error => {
