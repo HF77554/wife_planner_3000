@@ -19,19 +19,22 @@ bootstrap()
 
     // convert payload to json
     app.use(express.json());
+    app.use(express.urlencoded({ extended: false }));
   
     // subscribe routes - wait for routes to be subscribed before starting server
     await routeSubscriber(app);
     
+
+    //runs webpage
+    if (process.env.NODE_ENV === 'production') {
+      console.log('loading static file')
+      app.use('/static', express.static(path.join(__dirname, 'client/build')));
+    }
+
     //listen to port
     app.listen(port, () => {
       console.log(`Server is running in port ${port}`)
     });
-
-    //runs webpage
-    //if (process.env.NODE_ENV === 'production') {
-      //app.use('/static', express.static(path.join(__dirname, 'client/build')));
-    //}
   })
   .catch(error => {
     console.error(`Error bootstrapping application`, error);
