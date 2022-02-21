@@ -8,7 +8,7 @@
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "concurrently \"node herokuLoader.js\" \"npm run build\"",
+    "start": "concurrently \"node herokuLoader.js\" \"npm client\"",
     "client": "cd client && npm start",
     "dev": "concurrently -n 'server,client' -c 'red,green'  \"node server.js\" \"npm run client\""
   },
