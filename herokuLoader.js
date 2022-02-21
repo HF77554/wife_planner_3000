@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const bootstrap = require('./server/bootstrap');
+const bootstrap = require('./server/bootstrap.js');
 const routeSubscriber = require('./server/routes')
 const helmet = require('helmet');
 const cors = require("cors");
@@ -29,9 +29,9 @@ bootstrap()
     });
 
     //runs webpage
-    if (process.env.NODE_ENV === 'production') {
-      app.use('/static', express.static(path.join(__dirname, 'client/build')));
-    }
+    //if (process.env.NODE_ENV === 'production') {
+      //app.use('/static', express.static(path.join(__dirname, 'client/build')));
+    //}
   })
   .catch(error => {
     console.error(`Error bootstrapping application`, error);
