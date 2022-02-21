@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 module.exports = () =>
   new Promise(async (resolve, reject) => {
+    
     try {
       const connectPromise = mongoose.connect(process.env.DATABASE_URL, {
         useNewUrlParser: true,
