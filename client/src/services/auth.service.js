@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_URL = "http://localhost:4000/";
+const SERVER_URL = "http://wifeplanner3000.herokuapp.com/";
 
 const register = (username, userpassword, email) => {
   return axios.post(SERVER_URL + "register", {
