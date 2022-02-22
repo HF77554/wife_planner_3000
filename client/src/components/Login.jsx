@@ -10,6 +10,18 @@ const Login = ({onLogin}) => {
     const [username, setUsername] = useState("");
     const [userpassword, setUserpassword] = useState("");
 
+    const onTestClick = (testUser) => {
+        
+        if (testUser==='husband') {
+            setUsername('husband')
+            setUserpassword('husband123456')
+        }
+        if (testUser==='wife') {
+            setUsername('wife')
+            setUserpassword('wife123456')
+        }
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
         if (!username || !userpassword) {
@@ -58,6 +70,15 @@ const Login = ({onLogin}) => {
             <LinkContainer to="/signup">
                     <Nav.Link className='text-center h5 mt-5'>No Profile? Click Here to Sign up!</Nav.Link>
             </LinkContainer>
+
+            <div className="d-grid gap-2">
+                <Button variant="secondary" size="lg" onClick={() => onTestClick('wife')}>
+                    Test 'Wife'
+                </Button>
+                <Button variant="secondary" size="lg" onClick={() => onTestClick('husband')}>
+                    Test 'Husband'
+                </Button>
+            </div>
         </div>
     )
 }
