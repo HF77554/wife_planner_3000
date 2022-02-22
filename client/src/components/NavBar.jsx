@@ -7,7 +7,7 @@ const NavBar = ({onVerifiedUser, onLogOut}) => {
     return (
         <Navbar bg="dark" variant="dark">
             <LinkContainer to="/Home">
-                <Navbar.Brand>LOGO</Navbar.Brand>
+                <Navbar.Brand>WIFEPLANNER 3000</Navbar.Brand>
             </LinkContainer>                
             <Nav className="me-auto my-2 text-light">
                 <Row className='me-3 h4'>
