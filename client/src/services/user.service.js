@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const DATABASE_URL = "http://localhost:4000/";
+const DATABASE_URL = "http://wifeplanner3000.herokuapp.com/";
 
 const getUserInfo = async () => {
   try {
